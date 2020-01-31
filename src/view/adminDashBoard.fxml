@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="831.0" prefWidth="1365.0" stylesheets="@../style/adminDashBoard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardController">
+   <children>
+      <BorderPane prefHeight="831.0" prefWidth="1191.0">
+         <left>
+            <VBox prefHeight="831.0" prefWidth="211.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="41.0" prefWidth="212.0" styleClass="topPane">
+                     <children>
+                        <ImageView fx:id="logoImage" fitHeight="35.0" fitWidth="30.0" layoutX="22.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/logo2Clair.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="36.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="profilePane" prefHeight="138.0" prefWidth="212.0">
+                     <children>
+                        <ImageView fx:id="imageProfile" fitHeight="71.0" fitWidth="82.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/defaultProfile.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="nameProfile" alignment="CENTER" layoutX="4.0" layoutY="85.0" prefHeight="27.0" prefWidth="204.0" styleClass="nameProfile" text="Name" />
+                        <Label fx:id="typeEmProfile" alignment="CENTER" layoutX="3.0" layoutY="112.0" prefHeight="17.0" prefWidth="205.0" styleClass="typeEmProfile" text="TypeEm" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="27.0" prefWidth="212.0">
+                     <children>
+                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="212.0">
+                     <children>
+                        <JFXButton fx:id="dashboardOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="optionSelected" text="Dashboard" />
+                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/homeSombre.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="212.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="174.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/nextArrow.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton fx:id="settingsOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="     Farm Settings" />
+                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/batchSombre.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="27.0" prefWidth="212.0">
+                     <children>
+                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="212.0">
+                     <children>
+                        <JFXButton fx:id="customersOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text=" Customers" />
+                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/customer.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="42.0" prefWidth="212.0">
+                     <children>
+                        <JFXButton fx:id="customersOption1" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Suppliers" />
+                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/supplierSombre.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <Pane fx:id="centerPane" prefHeight="831.0" prefWidth="1142.0" styleClass="centerPane" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="-2.0" layoutY="-6.0" prefHeight="262.0" prefWidth="1156.0" styleClass="topPane">
+                     <children>
+                        <Pane fx:id="mailPane" layoutX="936.0" layoutY="13.0" prefHeight="49.0" prefWidth="55.0">
+                           <children>
+                              <ImageView fitHeight="29.0" fitWidth="41.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/mail.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="unreadedMail" fitHeight="29.0" fitWidth="34.0" layoutX="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="372.0" layoutY="96.0" prefHeight="27.0" prefWidth="380.0" styleClass="welcome" text="Welcome back, &lt;Nom&gt;!" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="131.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
+                        <Pane fx:id="notificationPane" layoutX="995.0" layoutY="13.0" prefHeight="48.0" prefWidth="54.0">
+                           <children>
+                              <ImageView fitHeight="29.0" fitWidth="41.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/notification.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fx:id="unreadedNotification" fitHeight="29.0" fitWidth="34.0" layoutX="24.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/+.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="55.0" layoutY="167.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 0.6em;">
+                     <children>
+                        <Label layoutX="25.0" layoutY="2.0" prefHeight="50.0" prefWidth="99.0" text="Weekly Overview" />
+                        <Label layoutX="25.0" layoutY="44.0" text="Period:" />
+                        <Label layoutX="68.0" layoutY="44.0" text="Oct 14 , 2019- Oct 21, 2019 " />
+                        <Pane layoutX="37.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" style="-fx-border-color: #dddddd; -fx-border-radius: 0.7em;" />
+                        <Pane layoutX="238.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" style="-fx-border-color: #dddddd; -fx-border-radius: 0.7em;" />
+                        <Pane layoutX="457.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" style="-fx-border-color: #dddddd; -fx-border-radius: 0.7em;" />
+                        <Pane layoutX="666.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" style="-fx-border-color: #dddddd; -fx-border-radius: 0.7em;" />
+                        <Pane layoutX="866.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" style="-fx-border-color: #dddddd; -fx-border-radius: 0.7em;" />
+                        <AreaChart layoutX="3.0" layoutY="146.0" prefHeight="289.0" prefWidth="533.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </AreaChart>
+                        <LineChart layoutX="568.0" layoutY="148.0" prefHeight="286.0" prefWidth="489.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </LineChart>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

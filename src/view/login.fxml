@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="745.0" stylesheets="@../style/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </top>
+         <bottom>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </bottom>
+         <left>
+            <Pane prefHeight="539.0" prefWidth="254.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefHeight="539.0" prefWidth="236.0" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <HBox alignment="CENTER" prefHeight="539.0" prefWidth="743.0" style="-fx-background-radius: 0.3em;" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane styleClass="rootPane">
+                     <children>
+                        <Pane fx:id="loginLeftPane" layoutX="-19.0" prefHeight="539.0" prefWidth="343.0" styleClass="loginLeftPane">
+                           <children>
+                              <ImageView fitHeight="236.0" fitWidth="228.0" layoutX="54.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logoLogin.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="65.0" layoutY="302.0" prefHeight="45.0" prefWidth="199.0" text="Script Farm" textFill="#f5f5f5">
+                                 <font>
+                                    <Font name="Cambria" size="37.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="356.0" prefHeight="20.0" prefWidth="299.0" text="Manage and control your farm activities easily">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="324.0" prefHeight="539.0" prefWidth="403.0" styleClass="loginRightPane">
+                           <children>
+                              <JFXButton fx:id="signAdminButton" layoutX="95.0" layoutY="335.0" onAction="#verifyAdmin" prefHeight="46.0" prefWidth="236.0" styleClass="signAdminButton" text="Sign Up As Administrator">
+                                 <graphic>
+                                    <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/admin.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <ImageView fitHeight="45.0" fitWidth="60.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logo2.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXTextField fx:id="username" focusColor="#16a2a0" labelFloat="true" layoutX="91.0" layoutY="96.0" onMousePressed="#initReport" prefHeight="30.0" prefWidth="236.0" promptText="Username" style="-fx-border: 1px,1px, 0px,0px, #16A2A0;" styleClass="username">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXPasswordField fx:id="passwordField" focusColor="#16a2a0" labelFloat="true" layoutX="92.0" layoutY="175.0" onMousePressed="#initReport" prefHeight="25.0" prefWidth="236.0" promptText="Password" styleClass="passwordField">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXPasswordField>
+                              <Label id="report" fx:id="report" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="227.0" prefHeight="17.0" prefWidth="299.0" text="Connection to the Server ..." textAlignment="CENTER" />
+                              <JFXButton fx:id="passwordButton" layoutX="87.0" layoutY="266.0" onAction="#passwordForget" styleClass="passwordButton" text="Forgot Password ?" />
+                              <JFXButton fx:id="signButton" layoutX="255.0" layoutY="266.0" onAction="#verifyUser" prefHeight="25.0" prefWidth="65.0" styleClass="signButton" text="Sign Up" />
+                              <Separator layoutX="76.0" layoutY="321.0" prefHeight="3.0" prefWidth="114.0" />
+                              <Separator layoutX="221.0" layoutY="320.0" prefHeight="3.0" prefWidth="114.0" />
+                              <Label layoutX="200.0" layoutY="308.0" text="Or">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="229.0" layoutY="393.0" prefHeight="3.0" prefWidth="106.0" />
+                              <Separator layoutX="76.0" layoutY="393.0" prefHeight="3.0" prefWidth="114.0" />
+                              <Label layoutX="203.0" layoutY="383.0" text="Or">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="exitButton" layoutX="101.0" layoutY="414.0" onAction="#close" prefHeight="25.0" prefWidth="224.0" styleClass="exitButton" text="Exit" />
+                              <Label alignment="CENTER" layoutX="227.0" layoutY="501.0" prefHeight="17.0" prefWidth="167.0" styleClass="version" text="Version 1.0 - Jan 2020" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

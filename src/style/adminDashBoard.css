@@ -1,0 +1,69 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 30, 2020, 12:24:38 AM
+    Author     : Isaac
+*/
+
+.topPane{
+     -fx-background-color:#16A2A0;
+}
+
+.centerPane{
+    -fx-background-color:#DEEEEE;
+}
+
+.logoName{
+     -fx-font-family :"Cambria";
+     -fx-font-size:22px;
+     -fx-text-fill: #FFFFFF;
+}
+
+.nameProfile{
+     -fx-font-family: "Colibri";
+     -fx-font-size:18px;
+     -fx-text-fill: #000000;
+}
+
+.typeEmProfile{
+     -fx-font-family: "Colibri";
+     -fx-font-size:14px;
+     -fx-text-fill: #555555;
+}
+
+.group{
+     -fx-font-family: "Colibri";
+     -fx-font-size:14px;
+     -fx-text-fill: #999999;
+}
+
+.option{
+    -fx-font-size:16px;
+}
+
+.option:hover{
+    -fx-background-color:#CCCCCC;    
+}
+
+.optionSelected{
+    -fx-font-size:16px;
+    -fx-background-color:#16A2A0;
+    -fx-background-radius:0.4em;
+    -fx-text-fill: #FFFFFF;
+}
+
+.welcome{
+     -fx-font-family :"Cambria";
+     -fx-font-size:24px;
+     -fx-text-fill: #FFFFFF;
+}
+
+.notification{
+    -fx-font-family :"Arial";
+     -fx-font-size:14px;
+     -fx-font-style: oblique;
+     -fx-text-fill: #FFFFFF;
+}

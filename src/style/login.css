@@ -1,0 +1,80 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 22, 2020, 11:18:25 PM
+    Author     : Isaac
+*/
+
+
+.root{
+    -fx-background-image: url('../images/hen1.jpg');
+    -fx-background-size: 100%;
+   
+}
+
+.rootPane{
+    -fx-background-color:rgba(255,255,255,0.7);
+    -fx-background-radius: 1em;
+}
+
+.loginLeftPane{
+    -fx-background-color:#16A2A0;
+    
+     -fx-background-radius: 0.7em;
+    
+}
+
+.loginRightPane{
+     /*-fx-background-image: url('../images/hen1.jpg');
+    -fx-background-size: 100%;*/
+    
+}
+
+#report{
+    -fx-text-fill:#16A2A0;
+}
+
+#reportFailed{
+    -fx-text-fill: #FA0000;
+}
+
+.passwordButton{
+    -fx-text-fill: #16A2A0;
+    -fx-cursor:hand;
+}
+
+.passwordButton:hover{
+    -fx-text-fill:#168191;
+    -fx-cursor:hand;
+}
+
+.signButton,.exitButton{
+    -fx-text-fill: #16A2A0;
+    -fx-border-color: #16A2A0;
+    -fx-border-radius:0.3em;
+}
+
+.signButton:hover,.exitButton:hover{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #16A2A0;
+    -fx-border-radius:0.3em;
+}
+
+.signAdminButton{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #0C8280;
+    -fx-border-radius:0.3em;
+}
+
+.signAdminButton:hover{
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #16A2A0;
+    -fx-border-radius:0.3em;
+}
+
+.version{
+    -fx-text-fill: #16A2A0;
+}

@@ -1,0 +1,26 @@
+
+
+Version:	3.8
+CmdLine:	E:\Academie\personal_documents\codes\Java\ScriptFarm\exe\ScriptFarm.exe --l4j-debug
+WOW64:		yes
+Working dir:	E:\Academie\personal_documents\codes\Java\ScriptFarm\exe\..\src\libraries\
+Bundled JRE:	jre1.8.0_241
+Check launcher:	E:\Academie\personal_documents\codes\Java\ScriptFarm\exe\jre1.8.0_241\bin\javaw.exe (not found)
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_241
+Check launcher:	C:\Program Files\Java\jre1.8.0_241\bin\javaw.exe (OK)
+Match:		1.8.0_241
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8
+Ignore:		1.8
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_162
+Ignore:		1.8.0_162
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_201
+Ignore:		1.8.0_201
+Runtime used:	1.8.0_241 (64-bit)
+Launcher:	C:\Program Files\Java\jre1.8.0_241\bin\javaw.exe
+Launcher args:	-jar "E:\Academie\personal_documents\codes\Java\ScriptFarm\exe\..\dist\ScriptFarm.jar"
+Args length:	86/32768 chars
+Exit code:	0
