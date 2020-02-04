@@ -9,7 +9,7 @@ CREATE TABLE Race(
 	nom VARCHAR(15) NOT NULL,
 	description TEXT NOT NULL,
 	prix_race DECIMAL(7,2),
-	PRIMARY KEY(idRace)
+	PRIMARY KEY (idRace)
 )
 ENGINE=INNODB;
 

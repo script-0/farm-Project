@@ -114,15 +114,16 @@ public class Mail extends javax.mail.Authenticator {
          Tools.showNotification("Mail Sender", "Verification code send successfully to "+ _to[0], Boolean.FALSE,Pos.TOP_RIGHT,5);
          return true;
      } catch (AddressException ex) {
-         Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+        /// Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+        Tools.showNotification("Mail Sender", "Sending Verification code failed. Please report to "+_from+" and try again", Boolean.TRUE,Pos.TOP_RIGHT,10);
      } catch (MessagingException ex) {
-         Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+       //  Logger.getLogger(Mail.class.getName()).log(Level.SEVERE, null, ex);
+       Tools.showNotification("Mail Sender", "Sending Verification code failed. Please report to "+_from+" and try again", Boolean.TRUE,Pos.TOP_RIGHT,10);
      }
   } else{ 
      Tools.showNotification("Mail Sender", "Sending Verification code failed. Please report to "+_from+" and try again", Boolean.TRUE,Pos.TOP_RIGHT,10);
-    return false; 
    } 
-     return false;
+   return false;
   } 
 
   public void addAttachment(String filename) throws Exception { 

@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -68,7 +69,7 @@ public class ResetPasswordContentController implements Initializable {
     
     private databaseUtils utils;
     
-    private int verificationCode;
+    private String verificationCode;
     /**
      * Initializes the controller class.
      */
@@ -133,7 +134,11 @@ public class ResetPasswordContentController implements Initializable {
     
     @FXML
     public void verifyCode(){
-        if(confirmPassword.getText().equals(String.valueOf(verificationCode)))
+        if(code.getText().equals(""))
+        {
+              imageCode.setImage(null);     
+        }
+        else if(code.getText().equals(verificationCode))
         {  
           imageCode.setImage(new Image("/images/confirmNotification.png"));
         }
@@ -153,7 +158,16 @@ public class ResetPasswordContentController implements Initializable {
         
     }
     
-    
+    private String getVerificationCode()
+    {
+        String c1,c2,c3,c4,c5;
+        c1 = String.valueOf((int)(Math.random()*10));
+        c2 = String.valueOf((int)(Math.random()*10));
+        c3 = String.valueOf((int)(Math.random()*10));
+        c4 = String.valueOf((int)(Math.random()*10));
+        c5 = String.valueOf((int)(Math.random()*10));
+        return c1+c2+c3+c4+c5;
+    }
     
    @FXML
     public void okClicked()
@@ -179,15 +193,14 @@ public class ResetPasswordContentController implements Initializable {
                 report.setText("Reset Password");
                 
                 //Generate verification code
-                verificationCode = (int)Math.round(Math.random()*10000);
+                verificationCode = getVerificationCode();
                 //sendEmail
-                Boolean result = mailSender.send(email,String.valueOf(verificationCode));
-               
+               /* Boolean result = mailSender.send(email,verificationCode);               
                 if(result)
-                {
+                {*/System.out.println("Code:"+verificationCode);
                     disabled(false);
-                }
-            }
+               // }
+             }
             
         }
     }

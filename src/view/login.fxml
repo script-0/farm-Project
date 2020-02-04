@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -98,6 +99,16 @@
                               </Label>
                               <JFXButton fx:id="exitButton" layoutX="101.0" layoutY="414.0" onAction="#close" prefHeight="25.0" prefWidth="224.0" styleClass="exitButton" text="Exit" />
                               <Label alignment="CENTER" layoutX="227.0" layoutY="501.0" prefHeight="17.0" prefWidth="167.0" styleClass="version" text="Version 1.0 - Jan 2020" />
+                              <Pane fx:id="progressPane" layoutX="36.0" layoutY="452.0" visible="false">
+                                 <children>
+                                    <Label prefHeight="21.0" prefWidth="142.0" text="Loading  Interface ...">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXProgressBar fx:id="progressBar" layoutX="69.0" layoutY="20.0" prefHeight="19.0" prefWidth="228.0" secondaryProgress="1.0" />
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                      </children>

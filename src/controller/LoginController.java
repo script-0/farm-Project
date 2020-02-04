@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +21,7 @@ import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -77,10 +79,16 @@ public class LoginController implements Initializable {
     @FXML
     private Pane loginLeftPane;
     
+    @FXML
+    private Pane progressPane;
+
+    @FXML
+    private JFXProgressBar progressBar;
+    
     private databaseUtils utils;
     
     private ObservableList<LoginCredentials> users ;
-    
+       
     @FXML
     private void handleButtonAction(ActionEvent event) {
     }
@@ -105,7 +113,7 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        initializeDataBase();        
+        initializeDataBase();
     }   
     
     public void initializeDataBase()
@@ -131,53 +139,78 @@ public class LoginController implements Initializable {
         users = utils.getLoginCredentails();
     }
     
+    
+    public void initProgressControl() {
+        progressBar.setProgress(JFXProgressBar.INDETERMINATE_PROGRESS);
+        progressPane.setVisible(false);
+    }
+    
     @FXML
     public void passwordForget()
     {
+        /*disableField(true);
+        progressPane.setVisible(true); */
         JFXDialogLayout content = new JFXDialogLayout();
-        //content.setHeading(new Text("Reset password"));
-        FXMLLoader loader;
         final JFXDialog  dialog = new JFXDialog(stackPane,content,JFXDialog.DialogTransition.CENTER);
+       /* Task task = new Task<Void>()
+                    {
+                        @Override
+                        public Void call() throws Exception {*/
+         FXMLLoader loader;
+                         //   updateProgress(1,10);
         try{
             loader = new FXMLLoader(getClass().getResource("/view/resetPasswordContent.fxml"));
-            
+           //                         updateProgress(2,10);
             Parent root = loader.load();
-            
+            //                        updateProgress(6,10);
             ResetPasswordContentController con = null;
             con = loader.getController(); 
-            /*if(con == null)
+            if(!con.equals(null))
             {
-                System.out.println("Loader failed");
-            }*/
-                BackgroundImage background = new BackgroundImage(new Image("/images/hen3.jpg"),
-                                                             BackgroundRepeat.NO_REPEAT,
-                                                             BackgroundRepeat.NO_REPEAT,
-                                                             BackgroundPosition.CENTER, 
-                                                             new BackgroundSize(100,100,true,true,true,true)
-                                                            );
+                System.out.println("Loader ok");
+            }
+            //                            updateProgress(8,10);
+            BackgroundImage background = new BackgroundImage(new Image("/images/hen3.jpg"),
+                                                                BackgroundRepeat.NO_REPEAT,
+                                                                BackgroundRepeat.NO_REPEAT,
+                                                                 BackgroundPosition.CENTER, 
+                                            new BackgroundSize(100,100,true,true,true,true));
             content.setBackground(new Background(background));
             content.setBody((Node)root);
             con.setUtils(utils);
+            //                        updateProgress(9,10);
             con.getCancelButton().setOnAction((me)->{
                 dialog.close();
             });
             con.getCloseButton().setOnMouseClicked((me)->{
                 dialog.close();
             });
-            //content.setActions(con.getCancelButton());
-         }catch (IOException ex) {
+        }catch (IOException ex){
+        //                         updateProgress(6,10);
             content.setBody(new Text("Loading of interface failed. Try again later..."));
             Tools.showNotification("Reset Password", "Loading of interface failed", Boolean.TRUE);
             JFXButton ok = new JFXButton("Okay");
             ok.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent me) {
-                    dialog.close();
-                }
+                    @Override
+                    public void handle(ActionEvent me) {
+                            dialog.close();
+                    }
             });
             content.setActions(ok);
-        }
-        dialog.show();
+           // updateProgress(8,10);
+         }
+         dialog.show();
+         /*System.out.println("Dialog Show ok");
+                           // initProgressControl();
+                           updateProgress(10,10);
+                            return null;
+                           }
+                    };
+        Thread thread = new Thread(task);
+        thread.run();
+        progressBar.progressProperty().bind(task.progressProperty());
+        disableField(false);
+       // progressPane.setVisible(true); */
     }
     
     @FXML
@@ -208,6 +241,7 @@ public class LoginController implements Initializable {
         {
                report.setText("Loading Dashboard Interface ... ");               
                report.setId("report");
+               
         }
         else
         {
@@ -217,12 +251,16 @@ public class LoginController implements Initializable {
         }
     }
     
+    private Stage getStage(ActionEvent e)
+    {
+        return (Stage) ((Node)e.getSource()).getScene().getWindow();
+    }
+    
     @FXML
     public void close(ActionEvent e)
     {
         utils.closeConnection();
-        Stage stage =(Stage) ((Node)e.getSource()).getScene().getWindow();
-        stage.close();
+        getStage(e).close();
     }
     
     @FXML
@@ -232,7 +270,6 @@ public class LoginController implements Initializable {
         passwordField.setDisable(disable);
         signButton.setDisable(disable);
         signAdminButton.setDisable(disable);
-       // exitButton.setDisable(disable);
         passwordButton.setDisable(disable);
     }
 }

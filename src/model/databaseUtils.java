@@ -31,7 +31,8 @@ public class databaseUtils {
         try{
             connect = database.getDBConnection();
             ps = connect.prepareStatement(query);
-            ps.executeQuery();            
+            ps.executeQuery();         
+            connect.commit();
         } catch (SQLException ex) {
             Logger.getLogger(databaseUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,6 +66,7 @@ public class databaseUtils {
                             ));
                //result.add(new UserCredentials(rs.getString(1),rs.getString(2),rs.getString(3),typeEmploye.get(rs.getInt(4) - 1),rs.getString(5),rs.getString(6)));
             }
+            connect.commit();
         } catch (SQLException ex) {
             Logger.getLogger(databaseUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
