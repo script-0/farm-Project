@@ -1,332 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <StackPane prefHeight="831.0" prefWidth="1365.0" stylesheets="@../style/adminDashBoard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardController">
    <children>
-      <BorderPane prefHeight="831.0" prefWidth="1191.0">
+      <BorderPane fx:id="borderPane" prefHeight="831.0" prefWidth="1191.0">
          <left>
-            <VBox prefHeight="831.0" prefWidth="211.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane prefHeight="41.0" prefWidth="212.0" styleClass="topPane">
+            <ScrollPane hbarPolicy="NEVER" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox alignment="TOP_CENTER" blendMode="MULTIPLY">
                      <children>
-                        <ImageView fx:id="logoImage" fitHeight="35.0" fitWidth="30.0" layoutX="22.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/logo2Clair.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="36.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
+                        <Pane prefHeight="41.0" prefWidth="212.0" styleClass="topPane">
+                           <children>
+                              <ImageView fx:id="logoImage" fitHeight="35.0" fitWidth="30.0" layoutX="22.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/logo2Clair.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="36.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
+                           </children>
+                        </Pane>
+                        <Pane fx:id="profilePane" prefHeight="138.0" prefWidth="212.0">
+                           <children>
+                              <ImageView fx:id="imgProfile" fitHeight="71.0" fitWidth="82.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/defaultProfile.png" />
+                                 </image>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </ImageView>
+                              <Label fx:id="nameProfile" alignment="CENTER" layoutX="4.0" layoutY="85.0" prefHeight="27.0" prefWidth="204.0" styleClass="nameProfile" text="Name" />
+                              <Label fx:id="typeEmp" alignment="CENTER" layoutX="3.0" layoutY="112.0" prefHeight="17.0" prefWidth="205.0" styleClass="typeEmProfile" text="TypeEm" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="27.0" prefWidth="212.0">
+                           <children>
+                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="38.0" prefWidth="206.0" styleClass="optionSelected" text="Dashboard" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/homeSombre.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <TitledPane alignment="TOP_LEFT" cache="true" expanded="false" lineSpacing="1.0" text="   Farm Settings" VBox.vgrow="ALWAYS">
+                           <content>
+                              <VBox prefHeight="224.0" prefWidth="197.0" spacing="5.0">
+                                 <children>
+                                    <Pane prefHeight="73.0" prefWidth="177.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <JFXButton fx:id="building" layoutY="-1.0" onAction="#loadBuilding" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="    Building" />
+                                          <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/henhouse.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="20.0" prefHeight="73.0" prefWidth="177.0">
+                                       <children>
+                                          <JFXButton fx:id="breed" layoutY="-1.0" onAction="#loadBreed" prefHeight="35.0" prefWidth="179.0" styleClass="option" text=" Breed" />
+                                          <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/breed.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="95.0" prefHeight="73.0" prefWidth="177.0">
+                                       <children>
+                                          <JFXButton fx:id="food" layoutY="-1.0" onAction="#loadFood" prefHeight="35.0" prefWidth="179.0" styleClass="option" text=" Food" />
+                                          <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="22.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/maizeSombre.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="120.0" prefHeight="73.0" prefWidth="177.0">
+                                       <children>
+                                          <JFXButton fx:id="eggTypes" layoutY="-1.0" onAction="#loadEggTypes" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="         Egg Types" />
+                                          <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/eggsNoir.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="206.0" prefHeight="73.0" prefWidth="177.0">
+                                       <children>
+                                          <JFXButton fx:id="sick" layoutY="-1.0" onAction="#loadSick" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="      Sickness" />
+                                          <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/sick.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="20.0" layoutY="218.0" prefHeight="73.0" prefWidth="177.0">
+                                       <children>
+                                          <JFXButton fx:id="vaccine" layoutY="-1.0" onAction="#loadVaccine" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="      Vaccine" />
+                                          <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/syringueNoir.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/batchSombre.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </TitledPane>
+                        <Pane prefHeight="27.0" prefWidth="212.0">
+                           <children>
+                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="customers" layoutX="3.0" layoutY="2.0" onAction="#loadCustomers" prefHeight="38.0" prefWidth="205.0" styleClass="option" text=" Customers" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/customer.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="suppliers" layoutX="3.0" layoutY="2.0" onAction="#loadSuppliers" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Suppliers" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/supplierSombre.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="27.0" prefWidth="212.0">
+                           <children>
+                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Records" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="batchFlock" layoutX="3.0" layoutY="2.0" onAction="#loadBatchFlock" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="   Batch Flock" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/poussins.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="eggProd" layoutX="3.0" layoutY="2.0" onAction="#loadEggProd" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="          Egg Production" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/eggsNoir.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="vaccination" layoutX="3.0" layoutY="2.0" onAction="#loadVaccination" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="    Vaccination" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/syringueNoir.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="27.0" prefWidth="212.0">
+                           <children>
+                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Previsions (Coming Soon)" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="42.0" prefWidth="212.0">
+                           <children>
+                              <JFXButton fx:id="EggPrediction" disable="true" layoutX="3.0" layoutY="2.0" onAction="#loadEggPrediction" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="        Egg Stock Prediction" />
+                              <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/supplierSombre.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
                      </children>
-                  </Pane>
-                  <Pane fx:id="profilePane" prefHeight="138.0" prefWidth="212.0">
-                     <children>
-                        <ImageView fx:id="imgProfile" fitHeight="71.0" fitWidth="82.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/defaultProfile.png" />
-                           </image>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </ImageView>
-                        <Label fx:id="nameProfile" alignment="CENTER" layoutX="4.0" layoutY="85.0" prefHeight="27.0" prefWidth="204.0" styleClass="nameProfile" text="Name" />
-                        <Label fx:id="typeEm" alignment="CENTER" layoutX="3.0" layoutY="112.0" prefHeight="17.0" prefWidth="205.0" styleClass="typeEmProfile" text="TypeEm" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="27.0" prefWidth="212.0">
-                     <children>
-                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="dashboardOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="optionSelected" text="Dashboard" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/homeSombre.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <ImageView fitHeight="23.0" fitWidth="29.0" layoutX="174.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/nextArrow.png" />
-                           </image>
-                        </ImageView>
-                        <JFXButton fx:id="settingsOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="     Farm Settings" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/batchSombre.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="27.0" prefWidth="212.0">
-                     <children>
-                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text=" Customers" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/customer.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption1" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Suppliers" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/supplierSombre.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="27.0" prefWidth="212.0">
-                     <children>
-                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Records" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption11" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="   Batch Flock" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/poussins.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption12" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="          Egg Production" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/eggsNoir.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption13" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="    Vaccination" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/syringueNoir.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="27.0" prefWidth="212.0">
-                     <children>
-                        <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Previsions (Coming Soon)" />
-                     </children>
-                  </Pane>
-                  <Pane prefHeight="42.0" prefWidth="212.0">
-                     <children>
-                        <JFXButton fx:id="customersOption14" disable="true" layoutX="3.0" layoutY="2.0" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="        Egg Stock Prediction" />
-                        <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/supplierSombre.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-               </children>
-            </VBox>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </left>
-         <center>
-            <Pane fx:id="centerPane" prefHeight="831.0" prefWidth="1142.0" styleClass="centerPane" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane layoutX="-1.0" layoutY="-6.0" prefHeight="262.0" prefWidth="1155.0" styleClass="topPane">
-                     <children>
-                        <Pane fx:id="mailPane" layoutX="938.0" layoutY="19.0" prefHeight="30.0" prefWidth="39.0">
-                           <children>
-                              <ImageView fitHeight="22.0" fitWidth="25.0" layoutX="3.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/mail.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fx:id="unreadedMail" fitHeight="21.0" fitWidth="22.0" layoutX="17.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/1.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="372.0" layoutY="96.0" prefHeight="27.0" prefWidth="380.0" styleClass="welcome" text="Welcome back, &lt;Nom&gt;!" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="131.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
-                        <Pane fx:id="notificationPane" layoutX="984.0" layoutY="13.0" prefHeight="36.0" prefWidth="35.0">
-                           <children>
-                              <ImageView fitHeight="22.0" fitWidth="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/notification.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="12.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/+.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Pane>
-                     </children>
-                  </Pane>
-                  <ScrollPane layoutX="20.0" layoutY="150.0" prefHeight="681.0" prefWidth="1102.0" styleClass="flowPane">
-                     <content>
-                        <FlowPane prefHeight="950.0" prefWidth="1074.0" styleClass="flowPane">
-                           <children>
-                              <Pane prefHeight="473.0" prefWidth="1062.0" styleClass="monthlyOverview">
-                                 <children>
-                                    <Label layoutX="25.0" layoutY="2.0" prefHeight="50.0" prefWidth="178.0" styleClass="nameProfile" text="Monthly Overview" />
-                                    <Label layoutX="25.0" layoutY="44.0" text="Period:" />
-                                    <Label layoutX="68.0" layoutY="44.0" styleClass="period" text="Oct 14 , 2019- Oct 21, 2019 " />
-                                    <Pane layoutX="37.0" layoutY="70.0" prefHeight="79.0" prefWidth="187.0" styleClass="dashItem">
-                                       <children>
-                                          <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="131.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/money.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="8.0" layoutY="6.0" prefHeight="20.0" prefWidth="93.0" styleClass="dashItemName" text="TOTAL EARNING" />
-                                          <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="5.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/dollar.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="28.0" layoutY="31.0" prefHeight="30.0" prefWidth="107.0" styleClass="dashItemMoney" text="1 000 000" />
-                                       </children></Pane>
-                                    <Pane layoutX="251.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
-                                       <children>
-                                          <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="115.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/henSombre.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="6.0" layoutY="6.0" prefHeight="20.0" prefWidth="93.0" styleClass="dashItemName" text="TOTAL BANDE" />
-                                          <Label layoutX="8.0" layoutY="31.0" prefHeight="30.0" prefWidth="113.0" styleClass="dashItemMoney" text="25 000" />
-                                       </children></Pane>
-                                    <Pane layoutX="457.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
-                                       <children>
-                                          <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="113.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/eggsSombre.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="7.0" layoutY="6.0" prefHeight="20.0" prefWidth="114.0" styleClass="dashItemName" text="EGG PRODUCTION" />
-                                          <Label layoutX="8.0" layoutY="30.0" prefHeight="30.0" prefWidth="102.0" styleClass="dashItemMoney" text="5 000" />
-                                       </children></Pane>
-                                    <Pane layoutX="666.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
-                                       <children>
-                                          <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="117.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/health.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="7.0" layoutY="6.0" prefHeight="20.0" prefWidth="114.0" styleClass="dashItemName" text="HEALTH" />
-                                          <Label layoutX="7.0" layoutY="32.0" prefHeight="30.0" prefWidth="111.0" styleClass="dashItemMoney" text="5 000" />
-                                       </children></Pane>
-                                    <Pane layoutX="866.0" layoutY="70.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
-                                       <children>
-                                          <Label layoutX="7.0" layoutY="7.0" prefHeight="20.0" prefWidth="114.0" styleClass="dashItemName" text="INCUBATOR" />
-                                          <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="119.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/incubator.png" />
-                                             </image>
-                                          </ImageView>
-                                          <Label layoutX="7.0" layoutY="33.0" prefHeight="30.0" prefWidth="114.0" styleClass="dashItemMoney" text="5 000" />
-                                       </children></Pane>
-                                    <AreaChart layoutX="9.0" layoutY="152.0" prefHeight="289.0" prefWidth="533.0">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" />
-                                       </yAxis>
-                                    </AreaChart>
-                                    <LineChart layoutX="556.0" layoutY="156.0" prefHeight="286.0" prefWidth="489.0">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" />
-                                       </yAxis>
-                                    </LineChart>
-                                    <JFXRadioButton layoutX="43.0" layoutY="441.0" />
-                                    <JFXRadioButton layoutX="195.0" layoutY="441.0" />
-                                    <JFXRadioButton layoutX="364.0" layoutY="441.0" />
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets bottom="7.0" left="12.0" right="7.0" top="7.0" />
-                                 </FlowPane.margin>
-                              </Pane>
-                              <Pane prefHeight="417.0" prefWidth="9.0" />
-                              <Pane prefHeight="417.0" prefWidth="499.0" styleClass="monthlyOverview">
-                                 <children>
-                                    <Label layoutX="25.0" layoutY="2.0" prefHeight="50.0" prefWidth="136.0" styleClass="nameProfile" text="Sales By Agent" />
-                                    <Label layoutX="25.0" layoutY="44.0" text="Period:" />
-                                    <Label layoutX="68.0" layoutY="44.0" text="Oct 14 , 2019- Oct 21, 2019 " />
-                                    <BarChart layoutX="11.0" layoutY="69.0" prefHeight="341.0" prefWidth="469.0">
-                                      <xAxis>
-                                        <CategoryAxis side="BOTTOM" />
-                                      </xAxis>
-                                      <yAxis>
-                                        <NumberAxis side="LEFT" />
-                                      </yAxis>
-                                    </BarChart>
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets bottom="30.0" left="12.0" right="17.0" />
-                                 </FlowPane.margin>
-                              </Pane>
-                              <Pane prefHeight="417.0" prefWidth="547.0" styleClass="monthlyOverview">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="2.0" prefHeight="50.0" prefWidth="136.0" styleClass="nameProfile" text="Next Tasks" />
-                                 </children>
-                                 <FlowPane.margin>
-                                    <Insets bottom="30.0" />
-                                 </FlowPane.margin>
-                              </Pane>
-                              <Pane prefHeight="55.0" prefWidth="1097.0">
-                                 <FlowPane.margin>
-                                    <Insets />
-                                 </FlowPane.margin></Pane>
-                           </children>
-                        </FlowPane>
-                     </content>
-                  </ScrollPane>
-               </children>
-            </Pane>
-         </center>
       </BorderPane>
    </children>
 </StackPane>

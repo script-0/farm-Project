@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 7, 2020, 1:05:30 PM
+    Author     : Isaac
+*/
+
+.titled-pane{
+    -fx-padding:0px 4px 0px 4px;
+}
+
+.titled-pane > .title{
+    -fx-background-color:rgba(222,238,238,0.4);
+   
+}
+
+.titled-pane > .title:hover{
+    -fx-background-color:#CCCCCC;
+}
+
+.titled-pane > .title > .text{
+    -fx-font-size:16px;
+}
+
+.titled-pane > .title > .arrow-button > .arrow{
+    -fx-background-color:#16A2A0;
+}
+
+.titled-pane > .content{
+     -fx-padding:4px 0px 0px 4px;
+}
+
+.scroll-pane{
+    
+}

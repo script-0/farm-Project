@@ -1,0 +1,54 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-image: url("../images/hen1.jpg");
+    -fx-background-size: 100%;
+}
+
+.paneDetails{
+    -fx-background-color:derive(#FFFFFF,10%);
+    -fx-background-radius: 1em;
+}
+
+.labelDetails{
+    -fx-font-family:"Cambria";
+    -fx-font-size:22px;
+    -fx-background-color:#FFFFFF;
+    -fx-alignment:center;
+    -fx-background-radius:0.5em;
+}
+
+.name,.tel,.address{
+    -jfx-focus-color:#16A2A0;
+    -jfx-label-float:true;
+    -jfx-unfocus-color:rgb(128,128,128);
+    -fx-alignment:center;
+}
+
+.modifyButton,.confirmButton{
+    -fx-font-size:14px;
+    -fx-border-color:#16A2A0;
+    -fx-alignment:center;
+    -fx-border-radius:0.5em;
+}
+
+.modifyButton:hover,.confirmButton:hover{
+    -fx-background-color:#16A2A0;
+    -fx-background-radius:0.5em;
+    -fx-text-fill:#FFFFFF;
+}
+
+.deleteButton,.cancelButton{
+    -fx-font-size:14px;
+    -fx-border-color:rgb(255,0,0);
+    -fx-alignment:center;
+    -fx-border-radius:0.5em;
+}
+
+.deleteButton:hover,.cancelButton:hover{
+    -fx-background-color:rgb(255,0,0);
+    -fx-background-radius:0.5em;
+    -fx-text-fill:#FFFFFF;
+}

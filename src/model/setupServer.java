@@ -28,11 +28,6 @@ public class setupServer implements Callable<databaseUtils>{
     @Override
     public databaseUtils call(){
         utils = new databaseUtils();
-        try {
-            sleep(2000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(setupServer.class.getName()).log(Level.SEVERE, null, ex);
-        }
         if(utils.getStateConnection())
         {
             report.setId("report");

@@ -31,8 +31,7 @@ public class databaseUtils {
         try{
             connect = database.getDBConnection();
             ps = connect.prepareStatement(query);
-            ps.executeQuery();         
-            connect.commit();
+            ps.executeQuery();    
         } catch (SQLException ex) {
             Logger.getLogger(databaseUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,13 +82,14 @@ public class databaseUtils {
         }
         query+=";";
         
+        ObservableList<String> typeEm = getTypeEmploye();
         try {
             connect = database.getDBConnection();
             ps = connect.prepareStatement(query);
             rs = ps.executeQuery();
             ObservableList<Profils> result = FXCollections.observableArrayList();
             while(rs.next()){
-                result.add(new Profils(rs.getString(1),rs.getString(2),rs.getString(3)));
+                result.add(new Profils(rs.getString(1),typeEm.get(rs.getInt(2)-1),rs.getString(3)));
                 if(rs.getString(4).equals(details.getPassword()))
                 {
                     passwordMatch = true;
@@ -154,6 +154,12 @@ public class databaseUtils {
             Logger.getLogger(databaseUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
          return email;
+     }
+     
+     public Boolean setPassword(String user,String newPassword)
+     {
+         //
+         return true;
      }
      
     public ObservableList<String> getTypeEmploye()

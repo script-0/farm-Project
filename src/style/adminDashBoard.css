@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : Isaac
 */
 
-@import url("import-JetBrains-mono.css");
+
+@import url("titledPane.css");
+@import url("scrollPane.css");
 
 .topPane{
      -fx-background-color:rgba(22,162,160,0.8);/*#16A2A0;*/
@@ -28,7 +30,9 @@ and open the template in the editor.
 }
 
 .flowPane{
-    fx-background-color:#FFFFFF;
+    -fx-background-radius: 0.6em;
+    -fx-border-radius: 0.6em;
+    -fx-background-color:#FFFFFF;
 }
 
 /**Image color: #747676*/

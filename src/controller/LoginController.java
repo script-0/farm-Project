@@ -29,6 +29,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -148,28 +149,24 @@ public class LoginController implements Initializable {
     @FXML
     public void passwordForget()
     {
-        /*disableField(true);
-        progressPane.setVisible(true); */
+        disableField(true);
+        progressPane.setVisible(true);
+        progressBar.setProgress(0f);
         JFXDialogLayout content = new JFXDialogLayout();
         final JFXDialog  dialog = new JFXDialog(stackPane,content,JFXDialog.DialogTransition.CENTER);
-       /* Task task = new Task<Void>()
-                    {
-                        @Override
-                        public Void call() throws Exception {*/
+        
          FXMLLoader loader;
-                         //   updateProgress(1,10);
+         progressBar.setProgress(0.5f);
         try{
             loader = new FXMLLoader(getClass().getResource("/view/resetPasswordContent.fxml"));
-           //                         updateProgress(2,10);
             Parent root = loader.load();
-            //                        updateProgress(6,10);
             ResetPasswordContentController con = null;
             con = loader.getController(); 
+            progressBar.setProgress(0.7f);
             if(!con.equals(null))
             {
                 System.out.println("Loader ok");
             }
-            //                            updateProgress(8,10);
             BackgroundImage background = new BackgroundImage(new Image("/images/hen3.jpg"),
                                                                 BackgroundRepeat.NO_REPEAT,
                                                                 BackgroundRepeat.NO_REPEAT,
@@ -178,15 +175,14 @@ public class LoginController implements Initializable {
             content.setBackground(new Background(background));
             content.setBody((Node)root);
             con.setUtils(utils);
-            //                        updateProgress(9,10);
             con.getCancelButton().setOnAction((me)->{
                 dialog.close();
             });
             con.getCloseButton().setOnMouseClicked((me)->{
                 dialog.close();
             });
+            progressBar.setProgress(0.9f);
         }catch (IOException ex){
-        //                         updateProgress(6,10);
             content.setBody(new Text("Loading of interface failed. Try again later..."));
             Tools.showNotification("Reset Password", "Loading of interface failed", Boolean.TRUE);
             JFXButton ok = new JFXButton("Okay");
@@ -197,35 +193,27 @@ public class LoginController implements Initializable {
                     }
             });
             content.setActions(ok);
-           // updateProgress(8,10);
+            progressBar.setProgress(0.9f);
          }
-         dialog.show();
-         /*System.out.println("Dialog Show ok");
-                           // initProgressControl();
-                           updateProgress(10,10);
-                            return null;
-                           }
-                    };
-        Thread thread = new Thread(task);
-        thread.run();
-        progressBar.progressProperty().bind(task.progressProperty());
+        progressBar.setProgress(1f);
         disableField(false);
-       // progressPane.setVisible(true); */
+        initProgressControl();
+        dialog.show();         
     }
     
     @FXML
-    public void verifyAdmin()
+    public void verifyAdmin(ActionEvent e)
     {
-        verifyInfo(true);
+        verifyInfo(true,e);
     }
     
     @FXML
-    public void verifyUser()
+    public void verifyUser(ActionEvent e)
     {
-         verifyInfo(false);
+         verifyInfo(false,e);
     }
     
-    public void verifyInfo(Boolean isAdmin)
+    public void verifyInfo(Boolean isAdmin,ActionEvent e)
     {
         String user = username.getText();
         String pass = passwordField.getText();
@@ -239,9 +227,41 @@ public class LoginController implements Initializable {
         Profils userProfil = utils.findUser(new LoginCredentials(user,pass,type));
         if(userProfil !=null)
         {
-               report.setText("Loading Dashboard Interface ... ");               
-               report.setId("report");
-               
+                report.setText("Loading Dashboard Interface ... ");               
+                report.setId("report");
+                
+                Parent root;   
+                FXMLLoader loader;
+                AdminDashBoardController con;
+                progressPane.setVisible(true);
+                progressBar.setProgress(0f);
+                disableField(true);
+                
+                try {
+                    loader = new FXMLLoader(getClass().getResource("/view/adminDashBoard.fxml"));
+                    root = loader.load(); //Chargement du menu
+                    
+                    progressBar.setProgress(0.5f);
+                    
+                    con = loader.getController();
+                    con.initProfils(userProfil); //Initialise les parametres de l'utilisateur
+                    
+                    progressBar.setProgress(0.6f);
+                    
+                    con.loadContent(); // Chargement le contenu du DashBoard
+                    
+                    progressBar.setProgress(0.9f);
+                    
+                    Stage s = getStage(e);
+                    s.setScene(new Scene(root));
+                    s.centerOnScreen();
+                    
+                } catch (Exception ex) {                    
+                    initProgressControl();
+                    disableField(false);
+                    Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                    Tools.showNotification("Load Dashboard","Load Dashboard failed", true);
+                }
         }
         else
         {

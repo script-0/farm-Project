@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Tools;
 import model.databaseUtils;
 import model.mailSender;
 
@@ -76,7 +77,8 @@ public class ResetPasswordContentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         report.setText("Server is up: Go to do");
-        disabled(true);
+        disabled(true);        
+        confirm.setDisable(true);
     }   
     
     
@@ -97,7 +99,6 @@ public class ResetPasswordContentController implements Initializable {
     
     private void disabled(Boolean disable)
     {
-        confirm.setDisable(disable);
         password.setDisable(disable);
         code.setDisable(disable);
         confirmPassword.setDisable(disable);
@@ -119,14 +120,17 @@ public class ResetPasswordContentController implements Initializable {
           if(password.getText().equals(confirmPassword.getText()))
           {
               imagePassword.setImage(new Image("/images/confirmNotification.png"));
+              confirm.setDisable(false);
           }
           else{
               imagePassword.setImage(new Image("/images/errorNotification.png"));
+              confirm.setDisable(true);
           }
         }
         else{
             if(password.getText().equals(""))
             {
+                confirm.setDisable(true);
                 imagePassword.setImage(null);
             }
         }
@@ -149,8 +153,17 @@ public class ResetPasswordContentController implements Initializable {
     
     @FXML
     public void confirm(){
-        
-        
+        if(utils.setPassword(user,password.getText()))
+        {
+            Tools.showNotification("Reset Password", "Password reseted successfully", Boolean.FALSE);
+            confirm.setDisable(true);
+            disabled(true);
+            cancel.setId("valid");
+            cancel.setText("OK");
+        }
+        else{
+            Tools.showNotification("Reset Password", "Reset password failed.", Boolean.TRUE);
+        }
     }
     
     @FXML
