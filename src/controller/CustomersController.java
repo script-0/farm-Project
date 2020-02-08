@@ -21,7 +21,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Isaac
  */
-public class CustomersViewController implements Initializable {
+public class CustomersController implements Initializable {
 
     
      @FXML
