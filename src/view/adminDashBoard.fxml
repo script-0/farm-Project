@@ -52,7 +52,7 @@
                         </Pane>
                         <Pane prefHeight="42.0" prefWidth="212.0">
                            <children>
-                              <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="38.0" prefWidth="206.0" styleClass="optionSelected" text="Dashboard" />
+                              <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="38.0" prefWidth="206.0" styleClass="option" text="Dashboard" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/homeSombre.png" />
@@ -60,7 +60,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <TitledPane alignment="TOP_LEFT" cache="true" expanded="false" lineSpacing="1.0" text="   Farm Settings" VBox.vgrow="ALWAYS">
+                        <TitledPane alignment="TOP_LEFT" cache="true" expanded="false" graphicTextGap="10.0" lineSpacing="1.0" text="Farm Settings" VBox.vgrow="ALWAYS">
                            <content>
                               <VBox prefHeight="224.0" prefWidth="197.0" spacing="5.0">
                                  <children>
@@ -170,7 +170,7 @@
                         </Pane>
                         <Pane prefHeight="42.0" prefWidth="212.0">
                            <children>
-                              <JFXButton fx:id="batchFlock" layoutX="3.0" layoutY="2.0" onAction="#loadBatchFlock" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="   Batch Flock" />
+                              <JFXButton fx:id="batchFlock" graphicTextGap="15.0" layoutX="3.0" layoutY="2.0" onAction="#loadBatchFlock" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Batch Flock" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/poussins.png" />
@@ -180,7 +180,7 @@
                         </Pane>
                         <Pane prefHeight="42.0" prefWidth="212.0">
                            <children>
-                              <JFXButton fx:id="eggProd" layoutX="3.0" layoutY="2.0" onAction="#loadEggProd" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="          Egg Production" />
+                              <JFXButton fx:id="eggProd" graphicTextGap="5.0" layoutX="3.0" layoutY="2.0" onAction="#loadEggProd" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="        Egg Production" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/eggsNoir.png" />
@@ -190,7 +190,7 @@
                         </Pane>
                         <Pane prefHeight="42.0" prefWidth="212.0">
                            <children>
-                              <JFXButton fx:id="vaccination" layoutX="3.0" layoutY="2.0" onAction="#loadVaccination" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="    Vaccination" />
+                              <JFXButton fx:id="vaccination" layoutX="3.0" layoutY="2.0" onAction="#loadVaccination" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="  Vaccination" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/syringueNoir.png" />

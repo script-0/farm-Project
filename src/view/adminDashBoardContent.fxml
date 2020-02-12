@@ -37,8 +37,8 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="88.0" prefHeight="30.0" prefWidth="160.0" styleClass="welcome" text="Welcome back," />
-            <Label fx:id="textNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="123.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="64.0" prefHeight="30.0" prefWidth="160.0" styleClass="welcome" text="Welcome back," />
+            <Label fx:id="textNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="99.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
             <Pane fx:id="notificationPane" layoutX="984.0" layoutY="13.0" prefHeight="36.0" prefWidth="35.0">
                <children>
                   <ImageView fitHeight="22.0" fitWidth="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -56,14 +56,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Pane>
-            <Label fx:id="nameProfile2" layoutX="593.0" layoutY="89.0" prefHeight="29.0" prefWidth="91.0" text="&lt;Nom&gt;!" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="nameProfile2" layoutX="598.0" layoutY="64.0" prefHeight="29.0" prefWidth="91.0" text="&lt;Nom&gt;!" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="21.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <ScrollPane layoutX="20.0" layoutY="150.0" prefHeight="681.0" prefWidth="1101.0" styleClass="flowPane">
+      <ScrollPane layoutX="20.0" layoutY="117.0" prefHeight="699.0" prefWidth="1101.0" styleClass="flowPane">
          <content>
             <FlowPane styleClass="flowPane">
                <children>

@@ -2,6 +2,5 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
-
-}
+@import url("rootPane.css");
+@import url("default.css");

@@ -155,12 +155,12 @@ public class ResetPasswordContentController implements Initializable {
     public void confirm(){
         if(utils.setPassword(user,password.getText()))
         {
-            Tools.showNotification("Reset Password", "Password reseted successfully", Boolean.FALSE);
+           Tools.showNotification("Reset Password", "Password reseted successfully", Boolean.FALSE);
             confirm.setDisable(true);
             disabled(true);
             cancel.setId("valid");
             cancel.setText("OK");
-        }
+       }
         else{
             Tools.showNotification("Reset Password", "Reset password failed.", Boolean.TRUE);
         }

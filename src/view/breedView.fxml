@@ -1,14 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BreedController">
-    <stylesheets>
-        <URL value="@breedview.css"/>
-    </stylesheets>
-</AnchorPane>
+<Pane prefHeight="831.0" prefWidth="1142.0" styleClass="rootPane" stylesheets="@../style/breedview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BatchFlockController">
+   <children>
+      <Pane layoutX="45.0" layoutY="3.0" prefHeight="758.0" prefWidth="991.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 1em;">
+         <children>
+            <TableView fx:id="tableView" layoutX="21.0" layoutY="346.0" prefHeight="380.0" prefWidth="595.0">
+               <columns>
+                  <TableColumn fx:id="nameColumn" prefWidth="125.00003051757812" text="Name" />
+                  <TableColumn fx:id="telColumn" prefWidth="175.0" text="Price" />
+                  <TableColumn fx:id="addressColumn" prefWidth="293.0" text="Description" />
+               </columns>
+            </TableView>
+            <Pane fx:id="paneDetails" layoutX="657.0" layoutY="350.0" prefHeight="380.0" prefWidth="317.0" styleClass="paneDetails">
+               <children>
+                  <JFXTextField fx:id="name" disable="true" layoutX="38.0" layoutY="41.0" prefHeight="25.0" prefWidth="247.0" promptText="Name" styleClass="textField" />
+                  <JFXTextArea fx:id="description" cache="true" disable="true" labelFloat="true" layoutX="38.0" layoutY="157.0" prefHeight="166.0" prefWidth="247.0" promptText="Description" styleClass="textField" wrapText="true" />
+                  <JFXTextField fx:id="tel" disable="true" layoutX="38.0" layoutY="107.0" prefHeight="25.0" prefWidth="247.0" promptText="Tel" styleClass="textField" />
+                  <Pane fx:id="confirmPane" layoutX="78.0" layoutY="334.0" visible="false">
+                     <children>
+                        <JFXButton fx:id="confirm" prefHeight="25.0" prefWidth="99.0" styleClass="confirmButton" text="Confirm">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/confirm.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="cancel" layoutX="143.0" layoutY="1.0" styleClass="cancelButton" text="Cancel">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="modifyPane" layoutX="18.0" layoutY="336.0">
+                     <children>
+                        <JFXButton fx:id="modify" layoutX="25.0" layoutY="1.0" prefHeight="32.0" prefWidth="99.0" styleClass="modifyButton" text="Modify">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/modify.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="delete" graphicTextGap="5.0" layoutX="189.0" prefHeight="32.0" prefWidth="90.0" styleClass="deleteButton" text="Delete">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+                  <Label fx:id="label" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
+                     <effect>
+                        <DropShadow color="#615b5b" />
+                     </effect>
+                  </Label>
+                  <JFXButton fx:id="add" layoutX="203.0" layoutY="11.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <DropShadow color="#615b5b" />
+               </effect>
+            </Pane>
+            <Pane layoutX="89.0" layoutY="10.0" prefHeight="319.0" prefWidth="809.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 0.6em;">
+               <effect>
+                  <DropShadow color="#808080" height="35.83" radius="16.6725" width="32.86" />
+               </effect>
+               <children>
+                  <PieChart fx:id="mostUsed" layoutX="414.0" layoutY="5.0" prefHeight="307.0" prefWidth="389.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 0.6em;" title="Most Present in the Farm" />
+                  <PieChart fx:id="mostExpensive" layoutX="3.0" layoutY="5.0" prefHeight="307.0" prefWidth="406.0" style="-fx-border-color: #CCCCCC; -fx-border-radius: 0.6em;" title="Most Expensive" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>
