@@ -1,0 +1,14 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 16, 2020, 2:47:15 PM
+    Author     : Isaac
+*/
+.chartPane{
+    -fx-background-radius: 0.6em;
+    -fx-background-color:#DDDDDD;    
+    -fx-effect:dropshadow(three-pass-box,#615b5b,10,0,0,0);
+}

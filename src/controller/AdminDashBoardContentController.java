@@ -7,6 +7,7 @@ package controller;
 
 import com.jfoenix.controls.JFXRadioButton;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -85,6 +86,8 @@ public class AdminDashBoardContentController implements Initializable {
     
     private String userName;
     
+    public Connection con;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        //
@@ -93,5 +96,10 @@ public class AdminDashBoardContentController implements Initializable {
     {
         userName = user;
         nameProfile2.setText(userName);        
+    }
+    
+    public void setConnection(Connection con)
+    {
+        this.con =con;
     }
 }

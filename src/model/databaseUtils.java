@@ -113,6 +113,11 @@ public class databaseUtils {
         return null;
     }
     
+    public Connection getConnection() throws SQLException
+    {
+       return database.getDBConnection();
+    }
+    
     public Boolean closeConnection()
     {
         return database.closeConnection();

@@ -20,8 +20,7 @@ public class DBConnection {
     private  static Connection DBConnection;
     public DBConnection(){
         launchConnection();
-    }
-    
+    }    
     
     private void launchConnection(){
         try{ 

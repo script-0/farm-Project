@@ -11,17 +11,17 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<StackPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BatchFlockController">
+<StackPane styleClass="rootPane" stylesheets="@../style/batchflockview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BatchFlockController">
    <children>
-      <Pane prefHeight="831.0" prefWidth="1142.0" styleClass="rootPane" stylesheets="@../style/batchflockview.css">
+      <VBox alignment="CENTER" fillWidth="false" StackPane.alignment="CENTER">
          <children>
-            <Pane layoutX="45.0" layoutY="16.0" prefHeight="758.0" prefWidth="991.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 1em;">
+            <Pane VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tableView" layoutX="72.0" layoutY="346.0" prefHeight="380.0" prefWidth="880.0">
+                  <TableView fx:id="tableView" layoutX="2.0" layoutY="342.0">
                      <columns>
                         <TableColumn fx:id="idColumn" prefWidth="92.0" text="Id" />
                         <TableColumn fx:id="quantityColumn" prefWidth="126.0" text="Quantity" />
@@ -35,10 +35,10 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Pane fx:id="paneDetails" layoutX="74.0" layoutY="28.0" prefHeight="307.0" prefWidth="880.0" styleClass="paneDetails">
+                  <Pane fx:id="paneDetails" layoutX="9.0" layoutY="32.0" styleClass="paneDetails">
                      <children>
-                        <JFXTextField fx:id="id" layoutX="60.0" layoutY="86.0" prefHeight="25.0" prefWidth="225.0" promptText="Id" styleClass="textField" />
-                        <JFXTextField fx:id="quantity" layoutX="60.0" layoutY="152.0" prefHeight="25.0" prefWidth="225.0" promptText="Quantity" styleClass="textField" />
+                        <JFXTextField fx:id="id" disable="true" layoutX="60.0" layoutY="86.0" prefHeight="25.0" prefWidth="225.0" promptText="Id" styleClass="textField" />
+                        <JFXTextField fx:id="quantity" disable="true" layoutX="60.0" layoutY="152.0" prefHeight="25.0" prefWidth="225.0" promptText="Quantity" styleClass="textField" />
                         <Pane fx:id="modifyPane" layoutX="316.0" layoutY="13.0">
                            <children>
                               <JFXButton fx:id="modify" layoutX="25.0" layoutY="1.0" prefHeight="32.0" prefWidth="99.0" styleClass="modifyButton" text="Modify">
@@ -91,14 +91,14 @@
                               <DropShadow color="#615b5b" />
                            </effect>
                         </Label>
-                        <JFXTextField fx:id="age" layoutX="57.0" layoutY="234.0" prefHeight="25.0" prefWidth="90.0" promptText="Age" styleClass="textField" />
-                        <JFXComboBox fx:id="ageComboBox" layoutX="160.0" layoutY="234.0" prefHeight="25.0" prefWidth="125.0" styleClass="textField" />
-                        <JFXTextField fx:id="buy" layoutX="336.0" layoutY="153.0" prefHeight="25.0" prefWidth="225.0" promptText="Buy Coast" styleClass="textField" />
-                        <JFXTextField fx:id="sell" layoutX="337.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Sell Coast" styleClass="textField" />
-                        <JFXDatePicker fx:id="date" layoutX="620.0" layoutY="88.0" overLay="true" prefHeight="25.0" prefWidth="225.0" promptText="Start Date" showWeekNumbers="true" styleClass="textField" />
-                        <JFXComboBox fx:id="building" layoutX="620.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Building" styleClass="textField" />
-                        <JFXComboBox fx:id="supplier" layoutX="620.0" layoutY="153.0" prefHeight="25.0" prefWidth="225.0" promptText="Supplier" styleClass="textField" />
-                        <JFXComboBox fx:id="breed" layoutX="338.0" layoutY="88.0" prefHeight="25.0" prefWidth="225.0" promptText="Breed" styleClass="textField" />
+                        <JFXTextField fx:id="age" disable="true" layoutX="57.0" layoutY="234.0" prefHeight="25.0" prefWidth="90.0" promptText="Age" styleClass="textField" />
+                        <JFXComboBox fx:id="ageComboBox" disable="true" layoutX="160.0" layoutY="234.0" prefHeight="25.0" prefWidth="125.0" styleClass="textField" />
+                        <JFXTextField fx:id="buy" disable="true" layoutX="336.0" layoutY="153.0" prefHeight="25.0" prefWidth="225.0" promptText="Buy Coast" styleClass="textField" />
+                        <JFXTextField fx:id="sell" disable="true" layoutX="337.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Sell Coast" styleClass="textField" />
+                        <JFXDatePicker fx:id="date" disable="true" editable="false" layoutX="620.0" layoutY="88.0" prefHeight="25.0" prefWidth="225.0" promptText="Start Date" showWeekNumbers="true" styleClass="textField" />
+                        <JFXComboBox fx:id="building" disable="true" layoutX="620.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Building" styleClass="textField" />
+                        <JFXComboBox fx:id="supplier" disable="true" layoutX="620.0" layoutY="153.0" prefHeight="25.0" prefWidth="225.0" promptText="Supplier" styleClass="textField" />
+                        <JFXComboBox fx:id="breed" disable="true" layoutX="338.0" layoutY="88.0" prefHeight="25.0" prefWidth="225.0" promptText="Breed" styleClass="textField" />
                         <JFXButton fx:id="add" layoutX="34.0" layoutY="15.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
                            <graphic>
                               <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
@@ -112,10 +112,16 @@
                      <effect>
                         <DropShadow color="#615b5b" />
                      </effect>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
                   </Pane>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </Pane>
          </children>
-      </Pane>
+      </VBox>
    </children>
 </StackPane>

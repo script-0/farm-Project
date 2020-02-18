@@ -4,11 +4,12 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -25,17 +26,17 @@
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
          <left>
-            <Pane prefHeight="539.0" prefWidth="254.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="518.0" prefWidth="52.0" BorderPane.alignment="CENTER_RIGHT" />
          </left>
          <right>
-            <Pane prefHeight="539.0" prefWidth="236.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="518.0" prefWidth="55.0" BorderPane.alignment="CENTER_LEFT" />
          </right>
          <center>
-            <HBox alignment="CENTER" prefHeight="539.0" prefWidth="743.0" style="-fx-background-radius: 0.3em;" BorderPane.alignment="CENTER">
+            <Group styleClass="rootPane" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane styleClass="rootPane">
+                  <HBox styleClass="rootPane">
                      <children>
-                        <Pane fx:id="loginLeftPane" layoutX="-19.0" prefHeight="539.0" prefWidth="343.0" styleClass="loginLeftPane">
+                        <Pane fx:id="loginLeftPane" prefHeight="518.0" prefWidth="320.0" styleClass="loginLeftPane">
                            <children>
                               <ImageView fitHeight="236.0" fitWidth="228.0" layoutX="54.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -54,9 +55,9 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Pane layoutX="324.0" prefHeight="539.0" prefWidth="403.0" styleClass="loginRightPane">
+                        <Pane styleClass="loginRightPane">
                            <children>
-                              <JFXButton fx:id="signAdminButton" layoutX="95.0" layoutY="335.0" onAction="#verifyAdmin" prefHeight="46.0" prefWidth="236.0" styleClass="signAdminButton" text="Sign Up As Administrator">
+                              <JFXButton fx:id="signAdminButton" graphicTextGap="20.0" layoutX="95.0" layoutY="335.0" onAction="#verifyAdmin" styleClass="signAdminButton" text="Sign Up As Administrator">
                                  <graphic>
                                     <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -64,6 +65,12 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
                               </JFXButton>
                               <ImageView fitHeight="45.0" fitWidth="60.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -82,7 +89,11 @@
                               </JFXPasswordField>
                               <Label id="report" fx:id="report" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="227.0" prefHeight="17.0" prefWidth="299.0" text="Connection to the Server ..." textAlignment="CENTER" />
                               <JFXButton fx:id="passwordButton" layoutX="87.0" layoutY="266.0" onAction="#passwordForget" styleClass="passwordButton" text="Forgot Password ?" />
-                              <JFXButton fx:id="signButton" layoutX="255.0" layoutY="266.0" onAction="#verifyUser" prefHeight="25.0" prefWidth="65.0" styleClass="signButton" text="Sign Up" />
+                              <JFXButton fx:id="signButton" layoutX="255.0" layoutY="263.0" onAction="#verifyUser" styleClass="signButton" text="Sign Up">
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding>
+                              </JFXButton>
                               <Separator layoutX="76.0" layoutY="321.0" prefHeight="3.0" prefWidth="114.0" />
                               <Separator layoutX="221.0" layoutY="320.0" prefHeight="3.0" prefWidth="114.0" />
                               <Label layoutX="200.0" layoutY="308.0" text="Or">
@@ -97,24 +108,31 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <JFXButton fx:id="exitButton" layoutX="101.0" layoutY="414.0" onAction="#close" prefHeight="25.0" prefWidth="224.0" styleClass="exitButton" text="Exit" />
+                              <JFXButton fx:id="exitButton" layoutX="105.0" layoutY="414.0" onAction="#close" styleClass="exitButton" text="Exit">
+                                 <padding>
+                                    <Insets bottom="5.0" left="95.0" right="95.0" top="5.0" />
+                                 </padding>
+                              </JFXButton>
                               <Label alignment="CENTER" layoutX="227.0" layoutY="501.0" prefHeight="17.0" prefWidth="167.0" styleClass="version" text="Version 1.0 - Jan 2020" />
-                              <Pane fx:id="progressPane" layoutX="36.0" layoutY="452.0" visible="false">
+                              <Pane fx:id="progressPane" layoutX="36.0" layoutY="452.0" prefWidth="269.0" visible="false">
                                  <children>
-                                    <Label prefHeight="21.0" prefWidth="142.0" text="Loading  Interface ...">
+                                    <Label alignment="TOP_LEFT" cache="true" text="Loading  Interface ...">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
                                     </Label>
-                                    <JFXProgressBar fx:id="progressBar" layoutX="69.0" layoutY="20.0" prefHeight="19.0" prefWidth="228.0" secondaryProgress="1.0" />
+                                    <JFXProgressBar fx:id="progressBar" layoutX="69.0" layoutY="20.0" secondaryProgress="1.0" style="-fx-min-height: 21px;" />
                                  </children>
                               </Pane>
                            </children>
                         </Pane>
                      </children>
-                  </AnchorPane>
+                  </HBox>
                </children>
-            </HBox>
+            </Group>
          </center>
       </BorderPane>
    </children>

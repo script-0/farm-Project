@@ -11,44 +11,27 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<Pane prefHeight="831.0" prefWidth="1142.0" styleClass="rootPane" stylesheets="@../style/sicknessview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BatchFlockController">
+<StackPane styleClass="rootPane" stylesheets="@../style/sicknessview.css" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.SicknessController" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="65.0" layoutY="7.0" prefHeight="732.0" prefWidth="991.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 1em;">
+      <VBox alignment="CENTER" fillWidth="false" StackPane.alignment="CENTER">
          <children>
-            <TableView fx:id="tableView" layoutX="72.0" layoutY="346.0" prefHeight="380.0" prefWidth="880.0">
-               <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="128.0" text="Id" />
-                  <TableColumn fx:id="quantityColumn" prefWidth="176.0" text="Duration" />
-                  <TableColumn fx:id="dateColumn" prefWidth="310.0" text="Traitment Description" />
-                  <TableColumn fx:id="incubationColumn" prefWidth="265.0" text="Sickness Description" />
-               </columns>
-            </TableView>
-            <Pane fx:id="paneDetails" layoutX="74.0" layoutY="28.0" prefHeight="307.0" prefWidth="880.0" styleClass="paneDetails">
+            <Pane>
                <children>
-                  <Pane fx:id="modifyPane" layoutX="316.0" layoutY="13.0">
+                  <TableView fx:id="tableView" layoutX="5.0" layoutY="314.0">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="128.0" text="Id" />
+                        <TableColumn fx:id="durationColumn" prefWidth="176.0" text="Duration" />
+                        <TableColumn fx:id="traitementColumn" prefWidth="310.0" text="Traitment Description" />
+                        <TableColumn fx:id="sicknessColumn" prefWidth="265.0" text="Sickness Description" />
+                     </columns>
+                  </TableView>
+                  <Pane fx:id="paneDetails" layoutX="41.0" layoutY="20.0" styleClass="paneDetails">
                      <children>
-                        <JFXButton fx:id="modify" layoutX="25.0" layoutY="1.0" prefHeight="32.0" prefWidth="99.0" styleClass="modifyButton" text="Modify">
-                           <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/modify.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="delete" graphicTextGap="5.0" layoutX="189.0" layoutY="2.0" prefHeight="32.0" prefWidth="90.0" styleClass="deleteButton" text="Delete">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/delete.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
-                        <Pane fx:id="confirmPane" layoutX="20.0" layoutY="1.0" prefHeight="35.0" prefWidth="272.0" visible="false">
+                        <Pane fx:id="confirmPane" layoutX="329.0" layoutY="10.0" prefHeight="35.0" prefWidth="272.0" visible="false">
                            <children>
                               <JFXButton fx:id="confirm" layoutX="6.0" layoutY="-1.0" prefHeight="25.0" prefWidth="99.0" styleClass="confirmButton" text="Confirm">
                                  <graphic>
@@ -73,33 +56,61 @@
                               </JFXButton>
                            </children>
                         </Pane>
+                        <Pane fx:id="modifyPane" layoutX="316.0" layoutY="13.0">
+                           <children>
+                              <JFXButton fx:id="modify" layoutX="25.0" layoutY="1.0" prefHeight="32.0" prefWidth="99.0" styleClass="modifyButton" text="Modify">
+                                 <graphic>
+                                    <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/modify.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="delete" graphicTextGap="5.0" layoutX="189.0" layoutY="2.0" prefHeight="32.0" prefWidth="90.0" styleClass="deleteButton" text="Delete">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/delete.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </Pane>
+                        <Label fx:id="label" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
+                           <effect>
+                              <DropShadow color="#615b5b" />
+                           </effect>
+                        </Label>
+                        <JFXTextField fx:id="id" disable="true" layoutX="38.0" layoutY="129.0" prefHeight="25.0" prefWidth="196.0" promptText="Id" styleClass="textField" />
+                        <JFXTextField fx:id="duree" disable="true" layoutX="38.0" layoutY="200.0" prefHeight="25.0" prefWidth="81.0" promptText="Duration" styleClass="textField" />
+                        <JFXComboBox fx:id="dureeComboBox" disable="true" layoutX="132.0" layoutY="200.0" prefHeight="25.0" prefWidth="99.0" styleClass="textField" />
+                        <JFXTextArea fx:id="traitment" disable="true" layoutX="277.0" layoutY="76.0" prefHeight="185.0" prefWidth="252.0" promptText="Description Traitement" styleClass="textField" />
+                        <JFXButton fx:id="add" layoutX="33.0" layoutY="19.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXTextArea fx:id="sickness" disable="true" layoutX="555.0" layoutY="76.0" prefHeight="185.0" prefWidth="252.0" promptText="Description Maladie" styleClass="textField" />
                      </children>
-                  </Pane>
-                  <Label fx:id="label" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
                      <effect>
                         <DropShadow color="#615b5b" />
                      </effect>
-                  </Label>
-                  <JFXTextField fx:id="id" layoutX="38.0" layoutY="129.0" prefHeight="25.0" prefWidth="196.0" promptText="Id" styleClass="textField" />
-                  <JFXTextField fx:id="duree" layoutX="38.0" layoutY="200.0" prefHeight="25.0" prefWidth="81.0" promptText="Duration" styleClass="textField" />
-                  <JFXComboBox fx:id="dureeComboBox" layoutX="132.0" layoutY="200.0" prefHeight="25.0" prefWidth="99.0" styleClass="textField" />
-                  <JFXTextArea fx:id="traitment" layoutX="277.0" layoutY="76.0" prefHeight="185.0" prefWidth="252.0" promptText="Description Traitement" styleClass="textField" />
-                  <JFXButton fx:id="add1" layoutX="33.0" layoutY="19.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
-                     <graphic>
-                        <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/add.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-                  <JFXTextArea fx:id="sickness" layoutX="555.0" layoutY="76.0" prefHeight="185.0" prefWidth="252.0" promptText="Description Maladie" styleClass="textField" />
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Pane>
                </children>
-               <effect>
-                  <DropShadow color="#615b5b" />
-               </effect>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Pane>
          </children>
-      </Pane>
+      </VBox>
    </children>
-</Pane>
+</StackPane>

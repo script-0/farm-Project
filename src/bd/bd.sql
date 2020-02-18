@@ -27,15 +27,22 @@ CREATE TABLE Bande(
 )
 ENGINE=INNODB;
 
+CREATE TABLE TypeFournisseur(
+        id INT UNSIGNED AUTO_INCREMENT,
+	nom VARCHAR(20) NOT NULL,
+        PRIMARY KEY(id),
+	UNIQUE ind_uni_email(nom)
+);
+
 CREATE TABLE Fournisseur(
-	idFourn INT UNSIGNED AUTO_INCREMENT,
-	nomFourn VARCHAR(20) NOT NULL,
+	id INT UNSIGNED AUTO_INCREMENT,
+	nom VARCHAR(20) NOT NULL,
 	adresse VARCHAR(20) NOT NULL,
-	tel INT UNSIGNED NOT NULL,
+	tel VARCHAR(15) NOT NULL,
 	email VARCHAR(20),
 	siteweb VARCHAR(20),
-	typeFourn INT(1),
-	PRIMARY KEY(idFourn),
+	type INT(1),
+	PRIMARY KEY(id),
 	UNIQUE ind_uni_email (email)
 )
 ENGINE=INNODB;
@@ -245,12 +252,12 @@ CREATE TABLE Employes (
 ENGINE=INNODB;
 
 ALTER TABLE Bande ADD CONSTRAINT fk_race_id FOREIGN KEY (race_id) REFERENCES RACE(idRace) ON DELETE SET NULL;
-ALTER TABLE Bande ADD CONSTRAINT fk_bande_race_id FOREIGN KEY (fourn_id) REFERENCES Fournisseur(idFourn) ON DELETE SET NULL;
+ALTER TABLE Bande ADD CONSTRAINT fk_bande_race_id FOREIGN KEY (fourn_id) REFERENCES Fournisseur(id) ON DELETE SET NULL;
 ALTER TABLE Bande ADD CONSTRAINT fk_bat_id FOREIGN KEY (bat_id) REFERENCES Batiment(idBat) ON DELETE SET NULL;
 ALTER TABLE Ration ADD CONSTRAINT fk_ration_ali_id FOREIGN KEY (ali_id) REFERENCES Aliment(idAli) ON DELETE SET NULL;
 ALTER TABLE Ration ADD CONSTRAINT fk_ration_bande_id FOREIGN KEY (bande_id) REFERENCES Bande(idBande) ON DELETE SET NULL;
 ALTER TABLE StockAliment ADD CONSTRAINT fk_stock_ali_id FOREIGN KEY (ali_id) REFERENCES Aliment(idAli) ON DELETE SET NULL;
-ALTER TABLE StockAliment ADD CONSTRAINT fk_stock_fourn_id FOREIGN KEY (fourn_id) REFERENCES Fournisseur(idFourn) ON DELETE SET NULL;
+ALTER TABLE StockAliment ADD CONSTRAINT fk_stock_fourn_id FOREIGN KEY (fourn_id) REFERENCES Fournisseur(id) ON DELETE SET NULL;
 ALTER TABLE Vendu ADD CONSTRAINT fk_vendu_client_id FOREIGN KEY (client_id) REFERENCES Client(idClient) ON DELETE SET NULL;
 ALTER TABLE Vendu ADD CONSTRAINT fk_vendu_bande_id FOREIGN KEY (bande_id) REFERENCES Bande(idBande) ON DELETE SET NULL;
 ALTER TABLE CollecteOeuf ADD CONSTRAINT fk_collect_bande_id FOREIGN KEY (bande_id) REFERENCES Bande(idBande) ON DELETE SET NULL;

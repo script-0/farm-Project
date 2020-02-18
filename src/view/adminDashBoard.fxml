@@ -13,15 +13,15 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="831.0" prefWidth="1365.0" stylesheets="@../style/adminDashBoard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardController">
+<StackPane stylesheets="@../style/adminDashBoard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardController">
    <children>
-      <BorderPane fx:id="borderPane" prefHeight="831.0" prefWidth="1191.0">
+      <BorderPane fx:id="borderPane">
          <left>
             <ScrollPane hbarPolicy="NEVER" BorderPane.alignment="CENTER">
                <content>
                   <VBox alignment="TOP_CENTER" blendMode="MULTIPLY">
                      <children>
-                        <Pane prefHeight="41.0" prefWidth="212.0" styleClass="topPane">
+                        <Pane styleClass="topPane">
                            <children>
                               <ImageView fx:id="logoImage" fitHeight="35.0" fitWidth="30.0" layoutX="22.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -31,7 +31,7 @@
                               <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="36.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
                            </children>
                         </Pane>
-                        <Pane fx:id="profilePane" prefHeight="138.0" prefWidth="212.0">
+                        <Pane fx:id="profilePane">
                            <children>
                               <ImageView fx:id="imgProfile" fitHeight="71.0" fitWidth="82.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -45,12 +45,12 @@
                               <Label fx:id="typeEmp" alignment="CENTER" layoutX="3.0" layoutY="112.0" prefHeight="17.0" prefWidth="205.0" styleClass="typeEmProfile" text="TypeEm" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="27.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="38.0" prefWidth="206.0" styleClass="option" text="Dashboard" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -62,9 +62,9 @@
                         </Pane>
                         <TitledPane alignment="TOP_LEFT" cache="true" expanded="false" graphicTextGap="10.0" lineSpacing="1.0" text="Farm Settings" VBox.vgrow="ALWAYS">
                            <content>
-                              <VBox prefHeight="224.0" prefWidth="197.0" spacing="5.0">
+                              <VBox spacing="5.0">
                                  <children>
-                                    <Pane prefHeight="73.0" prefWidth="177.0" VBox.vgrow="ALWAYS">
+                                    <Pane VBox.vgrow="ALWAYS">
                                        <children>
                                           <JFXButton fx:id="building" layoutY="-1.0" onAction="#loadBuilding" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="    Building" />
                                           <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -77,7 +77,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Pane>
-                                    <Pane layoutX="20.0" layoutY="20.0" prefHeight="73.0" prefWidth="177.0">
+                                    <Pane layoutX="20.0" layoutY="20.0">
                                        <children>
                                           <JFXButton fx:id="breed" layoutY="-1.0" onAction="#loadBreed" prefHeight="35.0" prefWidth="179.0" styleClass="option" text=" Breed" />
                                           <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
@@ -87,7 +87,7 @@
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="20.0" layoutY="95.0" prefHeight="73.0" prefWidth="177.0">
+                                    <Pane layoutX="20.0" layoutY="95.0">
                                        <children>
                                           <JFXButton fx:id="food" layoutY="-1.0" onAction="#loadFood" prefHeight="35.0" prefWidth="179.0" styleClass="option" text=" Food" />
                                           <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="22.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
@@ -97,7 +97,7 @@
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="20.0" layoutY="120.0" prefHeight="73.0" prefWidth="177.0">
+                                    <Pane layoutX="20.0" layoutY="120.0">
                                        <children>
                                           <JFXButton fx:id="eggTypes" layoutY="-1.0" onAction="#loadEggTypes" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="         Egg Types" />
                                           <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -107,7 +107,7 @@
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="20.0" layoutY="206.0" prefHeight="73.0" prefWidth="177.0">
+                                    <Pane layoutX="20.0" layoutY="206.0">
                                        <children>
                                           <JFXButton fx:id="sick" layoutY="-1.0" onAction="#loadSick" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="      Sickness" />
                                           <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -117,7 +117,7 @@
                                           </ImageView>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="20.0" layoutY="218.0" prefHeight="73.0" prefWidth="177.0">
+                                    <Pane layoutX="20.0" layoutY="218.0">
                                        <children>
                                           <JFXButton fx:id="vaccine" layoutY="-1.0" onAction="#loadVaccine" prefHeight="35.0" prefWidth="179.0" styleClass="option" text="      Vaccine" />
                                           <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="20.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -138,12 +138,12 @@
                               </ImageView>
                            </graphic>
                         </TitledPane>
-                        <Pane prefHeight="27.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="customers" layoutX="3.0" layoutY="2.0" onAction="#loadCustomers" prefHeight="38.0" prefWidth="205.0" styleClass="option" text=" Customers" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -153,7 +153,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="suppliers" layoutX="3.0" layoutY="2.0" onAction="#loadSuppliers" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Suppliers" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -163,12 +163,12 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane prefHeight="27.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Records" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="batchFlock" graphicTextGap="15.0" layoutX="3.0" layoutY="2.0" onAction="#loadBatchFlock" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="Batch Flock" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -178,7 +178,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="eggProd" graphicTextGap="5.0" layoutX="3.0" layoutY="2.0" onAction="#loadEggProd" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="        Egg Production" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -188,7 +188,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="vaccination" layoutX="3.0" layoutY="2.0" onAction="#loadVaccination" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="  Vaccination" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="23.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
@@ -198,12 +198,12 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Pane prefHeight="27.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Previsions (Coming Soon)" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="42.0" prefWidth="212.0">
+                        <Pane>
                            <children>
                               <JFXButton fx:id="EggPrediction" disable="true" layoutX="3.0" layoutY="2.0" onAction="#loadEggPrediction" prefHeight="38.0" prefWidth="205.0" styleClass="option" text="        Egg Stock Prediction" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">

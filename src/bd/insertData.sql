@@ -11,6 +11,12 @@ Use scriptFarm;
 INSERT INTO typeEmploye VALUES (1,"System"),
                                (2,"User");
 
+INSERT INTO TypeFournisseur VALUES (1,"Bande"),
+                                   (2,"Oeuf"),
+                                   (3,"Vaccin"),
+                                   (4,"Aliment");
 
 -- --------------Ajout de l'utilisateur System ------------
 INSERT INTO Employes VALUES(null,"System","root","root",1,"694255463","EFoulan-Club France","bekolleisaac@gmail.com","/images/root.png");
+
+-- ---------------Ajout Supplier--------------------- --

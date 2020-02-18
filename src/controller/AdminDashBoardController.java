@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import model.Profils;
+import model.databaseUtils;
 
 /**
  * FXML Controller class
@@ -95,8 +97,15 @@ public class AdminDashBoardController implements Initializable {
     
     private Profils userProfile;
     
+    public databaseUtils utils;
+    
     private Node hasFocus;
-
+    
+    public void setUtils(databaseUtils utils)
+    {
+        this.utils = utils;
+    }
+    
     @FXML
     void loadBatchFlock(ActionEvent event) { //load batchFlockView.fxml
         loadSimpleContent("batchFlock");
@@ -173,7 +182,13 @@ public class AdminDashBoardController implements Initializable {
 
     @FXML
     void loadSuppliers(ActionEvent event) { // load suppliersView.fxml
-        loadSimpleContent("suppliers");
+        
+        SuppliersController con = (SuppliersController)loadSimpleContent("suppliers");
+        try {
+            con.setConnection(utils.getConnection());
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
+        }        
         unsetFocus(hasFocus);
         hasFocus = suppliers;
         setFocus(hasFocus);
@@ -203,8 +218,11 @@ public class AdminDashBoardController implements Initializable {
             loader = new FXMLLoader(getClass().getResource("/view/adminDashBoardContent.fxml"));
             content = (Node) loader.load();
             AdminDashBoardContentController con  = loader.getController();
+            con.setConnection(utils.getConnection());
             con.initUserName(userProfile.getUsername());
         } catch (IOException ex) {
+            Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
         }
         borderPane.setCenter(content);
@@ -228,7 +246,7 @@ public class AdminDashBoardController implements Initializable {
         node.getStyleClass().add("optionSelected");
     }
     
-    public Boolean loadSimpleContent(String name)
+    public Object loadSimpleContent(String name)
     {
         Node content = null;
         FXMLLoader loader;
@@ -240,7 +258,7 @@ public class AdminDashBoardController implements Initializable {
             return false;
         }
         borderPane.setCenter(content);
-        return true;
+        return loader.getController();
     }
     
     @Override

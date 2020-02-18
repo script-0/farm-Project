@@ -3,4 +3,4 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<Pane prefHeight="831.0" prefWidth="1142.0" styleClass="rootPane" stylesheets="@../style/vaccineview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BatchFlockController" />
+<Pane prefHeight="831.0" prefWidth="1142.0" styleClass="rootPane" stylesheets="@../style/vaccineview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VaccineController" />

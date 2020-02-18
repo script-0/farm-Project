@@ -245,7 +245,7 @@ public class LoginController implements Initializable {
                     
                     con = loader.getController();
                     con.initProfils(userProfil); //Initialise les parametres de l'utilisateur
-                    
+                    con.setUtils(utils);
                     progressBar.setProgress(0.6f);
                     
                     con.loadContent(); // Chargement le contenu du DashBoard
