@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -55,9 +56,17 @@ public class AdminDashBoardController implements Initializable {
 
     @FXML
     private Label typeEmp;
-
     @FXML
     private JFXButton dashboard;
+
+    @FXML
+    private JFXButton employees;
+
+    @FXML
+    private JFXButton customers;
+
+    @FXML
+    private JFXButton suppliers;
 
     @FXML
     private JFXButton building;
@@ -78,28 +87,68 @@ public class AdminDashBoardController implements Initializable {
     private JFXButton vaccine;
 
     @FXML
-    private JFXButton customers;
-
-    @FXML
-    private JFXButton suppliers;
-
-    @FXML
     private JFXButton batchFlock;
 
     @FXML
     private JFXButton eggProd;
 
     @FXML
+    private JFXButton ration;
+
+    @FXML
+    private JFXButton stockAliment;
+
+    @FXML
+    private JFXButton venteOeuf;
+
+    @FXML
+    private JFXButton venteBande;
+
+    @FXML
+    private JFXButton incubation;
+
+    @FXML
+    private JFXButton poussinProduit;
+
+    @FXML
     private JFXButton vaccination;
 
     @FXML
+    private JFXButton bandeMalade;
+
+    @FXML
     private JFXButton EggPrediction;
+    
+    
+    @FXML
+    private TitledPane staffTitledPane;
+    
+    @FXML
+    private TitledPane farmTitledPane;
+     
+    @FXML
+    private TitledPane bandeTitledPane;
+    
+    @FXML
+    private TitledPane nutritionTitledPane;
+    
+    @FXML
+    private TitledPane ventesTitledPane;
+     
+    @FXML
+    private TitledPane incubationTitledPane;
+    
+    @FXML
+    private TitledPane healthTitledPane;
+    
     
     private Profils userProfile;
     
     public databaseUtils utils;
     
     private Node hasFocus;
+    
+    private Node hasFocusTitledPane;
     
     public void setUtils(databaseUtils utils)
     {
@@ -109,33 +158,27 @@ public class AdminDashBoardController implements Initializable {
     @FXML
     void loadBatchFlock(ActionEvent event) { //load batchFlockView.fxml
         loadSimpleContent("batchFlock");
-        unsetFocus(hasFocus);
-        hasFocus = batchFlock;
-        setFocus(hasFocus);
+        changeFocus(batchFlock);
     }
 
     @FXML
     void loadBreed(ActionEvent event) { //load breedView.fxml
         loadSimpleContent("breed");
-        unsetFocus(hasFocus);
-        hasFocus = breed;
-        setFocus(hasFocus);
+        changeFocus(breed);
     }
 
     @FXML
     void loadBuilding(ActionEvent event) { //load buildingView.fxml
         loadSimpleContent("building");
-        unsetFocus(hasFocus);
-        hasFocus = building;
-        setFocus(hasFocus);
+        changeFocus(building);
+        changeTitledPaneFocus(farmTitledPane);
     }
 
     @FXML
     void loadCustomers(ActionEvent event) {  //load customersView.fxml
         loadSimpleContent("customers");
-        unsetFocus(hasFocus);
-        hasFocus = customers;
-        setFocus(hasFocus);
+        changeFocus(customers);
+        changeTitledPaneFocus(staffTitledPane);
     }
 
     @FXML
@@ -151,33 +194,25 @@ public class AdminDashBoardController implements Initializable {
     @FXML
     void loadEggProd(ActionEvent event) { //load eggProdView.fxml
         loadSimpleContent("eggProd");
-        unsetFocus(hasFocus);
-        hasFocus = eggProd;
-        setFocus(hasFocus);
+        changeFocus(eggProd);
     }
 
     @FXML
     void loadEggTypes(ActionEvent event) { //load eggTypeView.fxml
         loadSimpleContent("eggType");
-        unsetFocus(hasFocus);
-        hasFocus = eggTypes;
-        setFocus(hasFocus);
+        changeFocus(eggTypes);
     }
 
     @FXML
     void loadFood(ActionEvent event) { //load foodView.fxml
         loadSimpleContent("food");
-        unsetFocus(hasFocus);
-        hasFocus = food;
-        setFocus(hasFocus);
+        changeFocus(food);
     }
 
     @FXML
     void loadSick(ActionEvent event) { //load sicknessView.fxml
         loadSimpleContent("sickness");
-        unsetFocus(hasFocus);
-        hasFocus = sick;
-        setFocus(hasFocus);
+        changeFocus(sick);
     }
 
     @FXML
@@ -188,28 +223,73 @@ public class AdminDashBoardController implements Initializable {
             con.setConnection(utils.getConnection());
         } catch (SQLException ex) {
             Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
-        }        
-        unsetFocus(hasFocus);
-        hasFocus = suppliers;
-        setFocus(hasFocus);
+        }
+        changeFocus(suppliers);
+        changeTitledPaneFocus(staffTitledPane);
     }
 
     @FXML
     void loadVaccination(ActionEvent event) { //laod vaccinView.fxml
         loadSimpleContent("vaccin");
-        unsetFocus(hasFocus);
-        hasFocus = vaccination;
-        setFocus(hasFocus);
+        changeFocus(vaccination);
     }
 
     @FXML
     void loadVaccine(ActionEvent event) { //load VaccineView.fxml
         loadSimpleContent("vaccine");
-        unsetFocus(hasFocus);
-        hasFocus = vaccine;
-        setFocus(hasFocus);
+        changeFocus(vaccine);
     }   
 
+     @FXML
+    void loadVenteBande(ActionEvent event) {
+        loadSimpleContent("batchFlock");
+        changeFocus(venteBande);
+    }
+
+    @FXML
+    void loadVenteOeuf(ActionEvent event) {
+        //loadSimpleContent("vaccine");
+        changeFocus(venteOeuf);
+    }
+
+     @FXML
+    void loadStockAliment(ActionEvent event) {
+       // loadSimpleContent("vaccine");
+        changeFocus(stockAliment);
+    }
+    
+     @FXML
+    void loadIncubation(ActionEvent event) {
+        //loadSimpleContent("vaccine");
+        changeFocus(incubation);
+    }
+
+    @FXML
+    void loadPoussinProduit(ActionEvent event) {
+        //loadSimpleContent("vaccine");
+        changeFocus(poussinProduit);
+    }
+
+     @FXML
+    void loadEmployees(ActionEvent event) {
+        //loadSimpleContent("vaccine");
+        changeFocus(employees);
+        changeTitledPaneFocus(staffTitledPane);
+    }
+
+    
+    @FXML
+    void loadRation(ActionEvent event) {
+        //loadSimpleContent("vaccine");
+        changeFocus(ration);
+    }
+
+    @FXML
+    void loadBandeMalade(ActionEvent event) {
+       // loadSimpleContent("vaccine");
+        changeFocus(bandeMalade);
+    }    
+    
     public void loadContent()
     {
         Node content = null;
@@ -232,6 +312,14 @@ public class AdminDashBoardController implements Initializable {
         }
         hasFocus = dashboard;
         setFocus(hasFocus);
+        unFocusTitledPane(hasFocusTitledPane);
+    }
+    
+    public void changeFocus(JFXButton temp)
+    {
+        unsetFocus(hasFocus);
+        hasFocus = temp;
+        setFocus(hasFocus);
     }
     
     public void unsetFocus(Node node)
@@ -244,6 +332,31 @@ public class AdminDashBoardController implements Initializable {
     {
         node.getStyleClass().remove("option");
         node.getStyleClass().add("optionSelected");
+    }
+    
+    public void unFocusTitledPane(Node node)
+    {
+        if(node!=null)node.getStyleClass().remove("titled-Pane-Selected");
+    }
+    
+    public void focusTitledPane(Node node)
+    {
+        if(node!=null) node.getStyleClass().add("titled-Pane-Selected");
+    }
+    
+    public void changeTitledPaneFocus(TitledPane node){
+        if(hasFocusTitledPane == null)
+        {
+            hasFocusTitledPane = node;
+            focusTitledPane(hasFocusTitledPane);
+           
+        }else{
+            if(!hasFocusTitledPane.equals(node)){
+                unFocusTitledPane(hasFocusTitledPane);
+                hasFocusTitledPane = node;
+                focusTitledPane(hasFocusTitledPane);
+            }
+        }
     }
     
     public Object loadSimpleContent(String name)

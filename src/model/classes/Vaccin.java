@@ -62,8 +62,4 @@ public class Vaccin {
 		public void setPrix(double prix) {
 			this.prix = prix;
 		}
-	 	
-	 	
-	
-	
 }

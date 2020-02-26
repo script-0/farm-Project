@@ -12,7 +12,6 @@ import java.net.URL;
 import java.sql.Connection;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Consumer;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -26,11 +25,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import model.DAO.DAOFactory;
 import model.DAO.FournisseursDAO;
 import model.DAO.TypeFournisseurDAO;
 import model.classes.Fournisseurs;
@@ -41,7 +40,7 @@ import model.classes.TypeFournisseur;
  *
  * @author Isaac
  */
-public class SuppliersController implements Initializable {
+public class SuppliersController extends defaultController<Fournisseurs> implements Initializable {
 
     //===================== La tableView et ses Colonnes ====================
     @FXML
@@ -157,8 +156,6 @@ public class SuppliersController implements Initializable {
     
     FournisseursDAO fournisseursUtils;
     
-    //===Utilise pour connaitre si on fait une modification d'in fournisseur ou si on en ajoute un ==
-    String operation = "";
     
     
     /**
@@ -188,17 +185,18 @@ public class SuppliersController implements Initializable {
     
    //// =================================== Fonctions effectuant des traitements specifiques ===============================
     
-    /** Recupere la connection et charge les informations utilisant la B.D. : les types de fournisseurs, la liste des fournisseurs,\.
+    /** Recupere la connection et charge les informations utilisant la B.D. : les types de fournisseurs, la liste des fournisseurs.
      * @param con.
      */
+    @Override
     public void setConnection(Connection con){
         this.con = con;
         //Initialise le DAO de TypeFournisseur et charge la liste des types de fournisseurs
-        typeFournisseurUtils  = new TypeFournisseurDAO(con);
+        typeFournisseurUtils  = DAOFactory.getTypeFournisseursDAO(con);
         typeFournisseur = typeFournisseurUtils.list();
         
         //Initialise le DAO de Fournisseurs
-        fournisseursUtils = new FournisseursDAO(con, typeFournisseur);  
+        fournisseursUtils = DAOFactory.getFourniseursDAO(con, typeFournisseur);  
         
         loadTypeFournisseur();//Ajoute les typeFournisseur a la comboBox
         
@@ -215,6 +213,7 @@ public class SuppliersController implements Initializable {
     }
     
     /**Initialisation de la tableview**/
+    @Override
     public void initializeTableView(){
         //id Column
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -242,7 +241,7 @@ public class SuppliersController implements Initializable {
             delete.setDisable((newSelection == null));
         });
          
-        tableView.setPlaceholder(new Label("No Supplier in the database"));
+        tableView.setPlaceholder(new Label("No Suppliers in the database"));
     }
     
     /** Lire la BD et charger tous les fournisseurs dans la tableView i.e. Les ajouter dans l'ArrayList listSuppliers*/
@@ -258,6 +257,7 @@ public class SuppliersController implements Initializable {
     /** Desactive tous les champs du formulaire si value == true et les active sinon
      * @param value
      */
+    @Override
     public void disableFields(Boolean value){
         address.setDisable(value);
         tel.setDisable(value);
@@ -268,6 +268,7 @@ public class SuppliersController implements Initializable {
     }
     
     /** Initialise tous les champs de notre formulaire en effacant ce qu'ils contiennent*/
+    @Override
     public void initFields(){
         id.setText("");
         name.setText("");
@@ -281,6 +282,7 @@ public class SuppliersController implements Initializable {
     /** Charge les donnees d'un fournisseur( represente par l'argument data) dans les differents champs
      * @param data 
      **/
+    @Override
     public void loadData(Fournisseurs data){
         id.setText(String.valueOf(data.getId()));
         name.setText(data.getName());
@@ -300,6 +302,7 @@ public class SuppliersController implements Initializable {
      *  --Les images a cote des text field sont retirees
      * @param initialize
     **/
+    @Override
     public void initializeInterface(Boolean initialize){
         add.setDisable(!initialize);
         modifyPane.setVisible(initialize);
@@ -318,6 +321,7 @@ public class SuppliersController implements Initializable {
     /** Creer et retourne un nouveau Fournisseur a partir des donnees entrees dans le formulaire
      * @return  
      **/        
+    @Override
     public Fournisseurs getData(){
         //Creer le nouveau fournisseur et le retourne
         Fournisseurs data = new Fournisseurs(Integer.valueOf(id.getText()),
@@ -334,6 +338,7 @@ public class SuppliersController implements Initializable {
    /** Modifie les donnees d'un fournisseurs avec les nouvelles donnees presentent dans l'argument data.
      * @param data
      * @return */
+    @Override
     public Boolean modifyData(Fournisseurs data){
         ObservableList<Fournisseurs> items = tableView.getSelectionModel().getSelectedItems();
         Fournisseurs e = items.get(0);
@@ -347,32 +352,30 @@ public class SuppliersController implements Initializable {
         return true;
     }
     
-    /**Raccourci de System.out.println*/
-    void print(Object value)
-    {
-        System.out.println(value);
+    @Override
+    public void initializeId(){
+        int maxId=1;
+        for(Fournisseurs a:listSuppliers){
+            maxId = (maxId < a.getId())? a.getId():maxId;
+        }
+        id.setText(String.valueOf(maxId + 1));
     }
+  
     
     //====================== Les listeners des differents buttons et Elements de notre vue =========================
     
     /** Fonction appelee lorsque le bouton "Add" est clicke */
+    @Override
     @FXML
     void addClicked(ActionEvent event) {
-        modifyClicked(null);
+        initializeInterface(false);
         initFields();
-        id.setText(String.valueOf(listSuppliers.size() + 1));
+        initializeId();
         operation = "ADD";
     }
     
-    /** Fonction appelee lorsque le bouton "Modify" est clicke */
-    @FXML
-    void modifyClicked(ActionEvent event){
-        initializeInterface(false);
-        verifyAll();
-        operation = "MODIFICATION";
-    }
-    
     /** Fonction appelee lorsque le bouton "Delete" est clicke */
+    @Override
     @FXML
     void deleteClicked(ActionEvent event) {
             
@@ -389,17 +392,12 @@ public class SuppliersController implements Initializable {
              });
                 //======Re-Initialiser l'interface
                initializeInterface(true);
+               tableViewClicked(null);
          }
     }    
     
-    /** Fonction appelee lorsque le bouton "Cancel" est clicke */
-    @FXML
-    void cancelClicked(ActionEvent event) {
-        initializeInterface(true);
-        tableViewClicked(null);
-    }
-    
     /** Fonction appelee lorsque le bouton "Confirm" est clicke */
+    @Override
     @FXML
     void confirmClicked(ActionEvent event) {
         
@@ -428,6 +426,7 @@ public class SuppliersController implements Initializable {
     }
     
     /** Elle est appelee lorsqu'on click sur le tableview. Charge les informations de la ligne selectionnee et la charge dans le formulaire**/
+    @Override
     @FXML
     void tableViewClicked(MouseEvent event) {
         ObservableList<Fournisseurs> items = tableView.getSelectionModel().getSelectedItems();
@@ -441,27 +440,17 @@ public class SuppliersController implements Initializable {
                 print("Items selected*2");
                 loadData(items.get(0));
             }
-        }        
+            else{
+                initFields();
+            }
+        }else{
+                initFields();
+            }     
         
     }
     
     
    //================= Fonctions qui verifient les informations entrees par l'utilisateur dans notre formulaire ============
-    
-    public static Boolean verifyValue(String value, String regex, ImageView report,JFXButton confirm){
-       if(value.equals("") || !value.matches(regex))
-       {
-            report.setImage(new Image("/images/errorNotification.png"));       
-            confirm.setDisable(true);
-            return false;
-       }
-       else
-       {
-           report.setImage(new Image("/images/confirmNotification.png")); 
-           confirm.setDisable(false);
-       }
-       return true;
-    }
     
     @FXML
     void verifyName(KeyEvent e) {
@@ -481,7 +470,7 @@ public class SuppliersController implements Initializable {
     
      @FXML
     void verifyAddress(KeyEvent e){
-        String regex= "[\\w|\\s]*";
+        String regex= "[\\w|\\s|-]*";
         String value = address.getText();
         fieldValue.set(2, verifyValue(value,regex,addressImg,confirm));
     }
@@ -507,6 +496,7 @@ public class SuppliersController implements Initializable {
         fieldValue.set(5, verifyValue(value,regex,typeImg,confirm));
     }  
     
+    @Override
     public void verifyAll()
     {
         verifyName(null);

@@ -37,8 +37,20 @@
                   </TableView>
                   <Pane fx:id="paneDetails" layoutX="13.0" layoutY="19.0" prefHeight="307.0" prefWidth="880.0" styleClass="paneDetails">
                      <children>
-                        <JFXTextField fx:id="id" disable="true" layoutX="59.0" layoutY="125.0" prefHeight="25.0" prefWidth="225.0" promptText="Id" styleClass="textField" />
-                        <JFXTextField fx:id="quantity" disable="true" layoutX="59.0" layoutY="191.0" prefHeight="25.0" prefWidth="225.0" promptText="Quantity" styleClass="textField" />
+                        <Label fx:id="label" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
+                           <effect>
+                              <DropShadow color="#615b5b" />
+                           </effect>
+                        </Label>
+                        <JFXButton fx:id="add" layoutX="16.0" layoutY="15.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
+                           <graphic>
+                              <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                         <Pane fx:id="modifyPane" layoutX="316.0" layoutY="13.0">
                            <children>
                               <JFXButton fx:id="modify" layoutX="25.0" layoutY="1.0" prefHeight="32.0" prefWidth="99.0" styleClass="modifyButton" text="Modify">
@@ -86,25 +98,13 @@
                               </Pane>
                            </children>
                         </Pane>
-                        <Label fx:id="label" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
-                           <effect>
-                              <DropShadow color="#615b5b" />
-                           </effect>
-                        </Label>
-                        <JFXTextField fx:id="price" disable="true" layoutX="337.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Price" styleClass="textField" />
+                        <JFXTextField fx:id="id" disable="true" labelFloat="true" layoutX="59.0" layoutY="125.0" prefHeight="25.0" prefWidth="225.0" promptText="Id" styleClass="textField" />
+                        <JFXTextField fx:id="quantity" disable="true" labelFloat="true" layoutX="59.0" layoutY="191.0" prefHeight="25.0" prefWidth="225.0" promptText="Quantity" styleClass="textField" />
                         <JFXDatePicker fx:id="date" disable="true" editable="false" layoutX="336.0" layoutY="89.0" prefHeight="25.0" prefWidth="225.0" promptText="Collect Date" showWeekNumbers="true" styleClass="textField" />
-                        <JFXComboBox fx:id="eggType" disable="true" layoutX="620.0" layoutY="197.0" prefHeight="25.0" prefWidth="225.0" promptText="Egg Type" styleClass="textField" />
-                        <JFXComboBox fx:id="incubation" disable="true" layoutX="334.0" layoutY="166.0" prefHeight="25.0" prefWidth="225.0" promptText="Incubation" styleClass="textField" />
-                        <JFXTextField fx:id="brokenEgg" disable="true" layoutX="620.0" layoutY="128.0" prefHeight="25.0" prefWidth="225.0" promptText="Broken Egg" styleClass="textField" />
-                        <JFXButton fx:id="add" layoutX="16.0" layoutY="15.0" prefHeight="32.0" prefWidth="75.0" styleClass="modifyButton" text="Add">
-                           <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/add.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </JFXButton>
+                        <JFXComboBox fx:id="incubation" disable="true" labelFloat="true" layoutX="334.0" layoutY="166.0" prefHeight="25.0" prefWidth="225.0" promptText="Incubation" styleClass="textField" />
+                        <JFXTextField fx:id="price" disable="true" labelFloat="true" layoutX="337.0" layoutY="234.0" prefHeight="25.0" prefWidth="225.0" promptText="Price" styleClass="textField" />
+                        <JFXTextField fx:id="brokenEgg" disable="true" labelFloat="true" layoutX="620.0" layoutY="128.0" prefHeight="25.0" prefWidth="225.0" promptText="Broken Egg" styleClass="textField" />
+                        <JFXComboBox fx:id="eggType" disable="true" labelFloat="true" layoutX="620.0" layoutY="197.0" prefHeight="25.0" prefWidth="225.0" promptText="Egg Type" styleClass="textField" />
                      </children>
                      <effect>
                         <DropShadow color="#615b5b" />
