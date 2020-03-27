@@ -34,7 +34,10 @@ and open the template in the editor.
 }
 
 .titled-Pane-Selected > .title{
-    -fx-background-color:#16A2A0;
+   /* -fx-background-color:#16A2A0;*/
+    -fx-border-color: #16A2A0;
+    -fx-border-width: 0px 5px 0px 0px;
+        
 }
 
 .titled-Pane-Selected > .title > .text{

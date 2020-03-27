@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" stylesheets="@../style/pdfViewer.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PdfViewerController">
+   <children>
+      <Pane prefHeight="25.0" prefWidth="480.0" styleClass="topPane">
+         <children>
+            <Label fx:id="titleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="1.0" prefHeight="17.0" prefWidth="313.0" styleClass="title" text="PDF Viewer">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Separator prefHeight="1.0" prefWidth="383.0" VBox.vgrow="ALWAYS" />
+      <ImageView fx:id="image" fitHeight="557.0" fitWidth="469.0" focusTraversable="true" pickOnBounds="true" VBox.vgrow="ALWAYS" />
+      <Separator prefHeight="1.0" prefWidth="383.0" />
+      <Pane prefHeight="35.0" prefWidth="480.0" styleClass="bottomPane">
+         <children>
+            <JFXButton fx:id="printButton" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="5.0" onAction="#printClicked" prefHeight="27.0" prefWidth="71.0" styleClass="printButton" text="Print ..." />
+            <JFXButton fx:id="saveButton" layoutX="256.0" layoutY="4.0" onAction="#saveClicked" prefHeight="27.0" prefWidth="100.0" styleClass="saveButton" text="Save to PDF ..." />
+            <JFXButton fx:id="closeButton" layoutX="396.0" layoutY="5.0" onAction="#closeClicked" prefHeight="27.0" prefWidth="64.0" styleClass="closeButton" text="Close" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

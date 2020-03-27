@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -21,19 +22,19 @@
                <content>
                   <VBox alignment="TOP_CENTER" blendMode="MULTIPLY">
                      <children>
-                        <Pane styleClass="topPane">
+                        <Pane prefHeight="46.0" prefWidth="242.0" styleClass="topPane">
                            <children>
                               <ImageView fx:id="logoImage" fitHeight="35.0" fitWidth="30.0" layoutX="22.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/logo2Clair.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="36.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
+                              <Label fx:id="logoName" layoutX="66.0" layoutY="2.0" prefHeight="42.0" prefWidth="129.0" styleClass="logoName" text="Script Farm" />
                            </children>
                         </Pane>
-                        <Pane fx:id="profilePane">
+                        <Pane fx:id="profilePane" prefHeight="80.0" prefWidth="242.0">
                            <children>
-                              <ImageView fx:id="imgProfile" fitHeight="71.0" fitWidth="82.0" layoutX="71.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgProfile" disable="true" fitHeight="71.0" fitWidth="82.0" layoutX="11.0" layoutY="13.0" onMouseClicked="#newImage" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/defaultProfile.png" />
                                  </image>
@@ -41,18 +42,39 @@
                                     <DropShadow />
                                  </effect>
                               </ImageView>
-                              <Label fx:id="nameProfile" alignment="CENTER" layoutX="4.0" layoutY="85.0" prefHeight="27.0" prefWidth="204.0" styleClass="nameProfile" text="Name" />
-                              <Label fx:id="typeEmp" alignment="CENTER" layoutX="3.0" layoutY="112.0" prefHeight="17.0" prefWidth="205.0" styleClass="typeEmProfile" text="TypeEm" />
+                              <Label fx:id="nameProfile" alignment="CENTER" layoutX="79.0" layoutY="25.0" prefHeight="27.0" prefWidth="162.0" styleClass="nameProfile" text="Name" />
+                              <Label fx:id="typeEmp" alignment="CENTER" layoutX="78.0" layoutY="51.0" prefHeight="20.0" prefWidth="162.0" styleClass="typeEmProfile" text="TypeEm" />
+                              <JFXButton fx:id="editProfileButton" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="155.0" layoutY="-13.0" onAction="#editProfileButtonClicked" prefHeight="23.0" prefWidth="41.0" styleClass="logout" text=" ">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/edit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXTextField fx:id="newName" alignment="CENTER" focusColor="#16a2a0" labelFloat="true" layoutX="91.0" layoutY="31.0" prefHeight="25.0" prefWidth="144.0" promptText="New Name here" visible="false" />
+                              <JFXButton fx:id="confirmButton" layoutX="155.0" layoutY="-13.0" onAction="#confirmButtonClicked" prefHeight="33.0" prefWidth="81.0" styleClass="editProfileButton" text="Confirm" visible="false" />
+                              <JFXButton fx:id="moreOptionButton" alignment="CENTER" layoutX="125.0" layoutY="61.0" onAction="#moreOptionButtonClicked" prefHeight="25.0" prefWidth="116.0" styleClass="moreOption" text="More Option &gt;&gt;" visible="false" />
+                              <JFXButton fx:id="logoutButton" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="198.0" layoutY="-13.0" onAction="#logoutButtonClicked" prefHeight="33.0" prefWidth="28.0" styleClass="logout" text=" ">
+                                 <graphic>
+                                    <ImageView fitHeight="23.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/logout.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
                            </children>
                         </Pane>
-                        <Pane>
+                        <Pane prefHeight="24.0" prefWidth="242.0">
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
+                              <Label layoutX="20.0" layoutY="1.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Main" />
                            </children>
                         </Pane>
-                        <Pane>
+                        <Pane prefWidth="242.0">
                            <children>
-                              <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="38.0" prefWidth="236.0" styleClass="option" text="Dashboard" />
+                              <JFXButton fx:id="dashboard" layoutX="3.0" layoutY="2.0" onAction="#loadDashboard" prefHeight="23.0" prefWidth="236.0" styleClass="option" text="Dashboard" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="24.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/homeSombre.png" />
@@ -62,7 +84,7 @@
                         </Pane>
                         <Pane>
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Staff Management" />
+                              <Label layoutX="20.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Staff Management" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="staffTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" prefWidth="217.0" text="Staff Management" VBox.vgrow="ALWAYS">
@@ -112,7 +134,7 @@
                         </TitledPane>
                         <Pane>
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm Settings" />
+                              <Label layoutX="20.0" layoutY="-1.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Farm Settings" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="farmTitledPane" alignment="TOP_LEFT" cache="true" expanded="false" graphicTextGap="10.0" lineSpacing="1.0" text="Farm Settings" VBox.vgrow="ALWAYS">
@@ -195,7 +217,7 @@
                         </TitledPane>
                         <Pane>
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Bande" />
+                              <Label layoutX="20.0" layoutY="-1.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Bande" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="bandeTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" text="Bande" VBox.vgrow="ALWAYS">
@@ -233,9 +255,9 @@
                               </ImageView>
                            </graphic>
                         </TitledPane>
-                        <Pane>
+                        <Pane prefHeight="18.0" prefWidth="242.0">
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Nutrition" />
+                              <Label layoutX="20.0" layoutY="-4.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Nutrition" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="nutritionTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" text="Nutrition">
@@ -275,7 +297,7 @@
                         </TitledPane>
                         <Pane>
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Ventes" />
+                              <Label layoutX="20.0" layoutY="3.0" prefHeight="20.0" prefWidth="216.0" styleClass="group" text="Ventes" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="ventesTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" text="Ventes">
@@ -313,9 +335,9 @@
                               </ImageView>
                            </graphic>
                         </TitledPane>
-                        <Pane>
+                        <Pane prefHeight="17.0" prefWidth="242.0">
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Incubation" />
+                              <Label layoutX="20.0" layoutY="-3.0" prefHeight="22.0" prefWidth="212.0" styleClass="group" text="Incubation" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="incubationTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" text="Incubation">
@@ -353,9 +375,9 @@
                               </ImageView>
                            </graphic>
                         </TitledPane>
-                        <Pane>
+                        <Pane prefWidth="242.0">
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Health" />
+                              <Label layoutX="20.0" prefHeight="20.0" prefWidth="215.0" styleClass="group" text="Health" />
                            </children>
                         </Pane>
                         <TitledPane fx:id="healthTitledPane" alignment="TOP_LEFT" expanded="false" graphicTextGap="10.0" prefWidth="214.0" text="Health">
@@ -395,12 +417,12 @@
                         </TitledPane>
                         <Pane>
                            <children>
-                              <Label layoutX="20.0" layoutY="3.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Previsions (Coming Soon)" />
+                              <Label layoutX="20.0" layoutY="1.0" prefHeight="22.0" prefWidth="188.0" styleClass="group" text="Previsions (Coming Soon)" />
                            </children>
                         </Pane>
                         <Pane>
                            <children>
-                              <JFXButton fx:id="EggPrediction" disable="true" layoutX="3.0" layoutY="2.0" onAction="#loadEggPrediction" prefHeight="38.0" prefWidth="234.0" styleClass="option" text="        Egg Stock Prediction" />
+                              <JFXButton fx:id="EggPrediction" disable="true" layoutX="3.0" layoutY="2.0" onAction="#loadEggPrediction" prefWidth="234.0" styleClass="option" text="        Egg Stock Prediction" />
                               <ImageView fitHeight="29.0" fitWidth="38.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/supplierSombre.png" />

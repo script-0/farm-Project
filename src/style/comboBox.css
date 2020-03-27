@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : Feb 15, 2020, 6:47:29 PM
     Author     : Isaac
 */
+
+.combo-box{
+    -jfx-focus-color:#16A2A0;
+}
+
 .combo-box .list-cell{
     -fx-text-fill: #16A2A0;
 }

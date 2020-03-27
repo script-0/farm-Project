@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
  */
 public class databaseUtils {
     private static final DBConnection database = new DBConnection();
-    public final String DEFAULT_IMAGE = "/images/defaultProfile.png";
+    public final String DEFAULT_IMAGE = "images/defaultProfile.png";
     private ResultSet rs;
     private PreparedStatement ps;
     private Connection connect;
@@ -36,6 +36,37 @@ public class databaseUtils {
             Logger.getLogger(databaseUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public Boolean saveImageProfile(String user,String img){
+        try {
+            String query = "UPDATE Employes set image=\""+img+"\" where username=\""+user+"\";";
+            connect = database.getDBConnection();
+            ps = connect.prepareStatement(query);
+            ps.executeUpdate();
+            Tools.showNotification("Database Admin", "Updating of your profile image succeeded", Boolean.FALSE);
+        } catch (SQLException ex) {
+            Tools.print("Update of profil image of user"+user+" failed");
+            Tools.showNotification("Database Admin", "Updating of your profile image failed.\n Try again later.", Boolean.TRUE);
+            return false;
+        }
+        return true;
+    }
+    
+    public Boolean saveUsername(String user,String newUser){
+        try {
+            String query = "UPDATE Employes SET username=\""+newUser+"\" WHERE username=\""+user+"\";";
+            connect = database.getDBConnection();
+            ps = connect.prepareStatement(query);
+            ps.executeUpdate();
+            Tools.showNotification("Database Admin", "Updating of your username succeeded", Boolean.FALSE);
+        } catch (SQLException ex) {
+            Tools.print("Update of usernmane of user"+user+" failed");
+            Tools.showNotification("Database Admin", "Updating of your username failed.\n Try again later.", Boolean.TRUE);
+            return false;
+        }
+        return true;
+    }
+    
     /* Return -2 si l'utilisateur n'est pas trouve
               -1 s'il est trouve mais les mots de passe ne correpondent pas
               0 s'il est trouve , les mots de passe correpondent mais pas le type d'emploi

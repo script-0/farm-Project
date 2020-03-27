@@ -7,8 +7,10 @@ package model;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -17,6 +19,17 @@ import org.controlsfx.control.Notifications;
  * @author Isaac
  */
 public class Tools {
+    
+    
+    public static Stage getStage(ActionEvent e){
+        return (Stage) ((Node)e.getSource()).getScene().getWindow();
+    }
+    
+    /**Raccourci de System.out.println*/
+    public static void print(Object value)
+    {
+        System.out.println(value);
+    }
     
     public static void showNotification(String title,String text,Boolean isError,Pos position,float temp)
     {

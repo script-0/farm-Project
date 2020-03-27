@@ -44,7 +44,6 @@ public abstract class DAO<T>{
     
     /**
     * Méthode de recherche des informations
-    * @param id
     * @return T*/
     //public abstract T find(int id);
     

@@ -49,6 +49,23 @@ and open the template in the editor.
      -fx-text-fill: #000000;
 }
 
+.editProfileButton{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0.7em;
+    -fx-text-fill:  #16A2A0;
+    -fx-border-radius: 0.6em;
+    -fx-border-color:  #16A2A0;
+}
+
+.editProfileButton:hover{
+    -fx-background-color: #16A2A0;
+    -fx-text-fill:  #FFFFFF;
+}
+
+#imgEditProfile:hover{
+     -fx-background-color: #FFFFFF;
+}
+
 .typeEmProfile{
      -fx-font-family: "Colibri";
      -fx-font-size:14px;
@@ -111,4 +128,21 @@ and open the template in the editor.
     -fx-font-family: "Colibri";
     -fx-font-size:18px;
     -fx-text-fill: #000000;
+}
+
+.moreOption{
+    -fx-text-fill: #16A2A0;
+    -fx-cursor:hand;
+}
+
+.moreOption:hover{
+    -fx-text-fill:#168191;
+    -fx-cursor:hand;
+}
+
+.logout{
+    -fx-border-color: #16A2A0;
+    -fx-border-radius: 0.6em;
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0.7em;
 }

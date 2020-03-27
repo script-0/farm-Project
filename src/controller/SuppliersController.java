@@ -5,17 +5,24 @@
  */
 package controller;
 
+import com.itextpdf.text.DocumentException;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +31,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -32,6 +40,8 @@ import javafx.scene.layout.Pane;
 import model.DAO.DAOFactory;
 import model.DAO.FournisseursDAO;
 import model.DAO.TypeFournisseurDAO;
+import model.PrinterClass.PdfViewer;
+import model.PrinterClass.PrinterClass;
 import model.classes.Fournisseurs;
 import model.classes.TypeFournisseur;
 
@@ -73,6 +83,18 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
 
     @FXML
     private Label labelDetails;
+    
+    @FXML
+    private JFXComboBox<String> searchColumn;
+    
+    @FXML
+    private TextField searchTextField;
+    
+    @FXML
+    private JFXButton searchButton;
+    
+    @FXML
+    private JFXButton stopSearchButton;
     
     //=========================Les Buttons ===========================
     @FXML
@@ -156,7 +178,19 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
     
     FournisseursDAO fournisseursUtils;
     
+    FilteredList<Fournisseurs> filteredData;
     
+    SortedList<Fournisseurs> sortedData ;
+    
+    int selectedSearchColumn = 1;/* 1 => Name
+                                    2 => Address
+                                    3 => Tel
+                                    4 => Email
+                                    5 => Website
+                                    6 => Type
+                                 */
+    
+    ArrayList<String> listColumnNames = new ArrayList<>();
     
     /**
      * Initializes the controller class.
@@ -165,6 +199,8 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        loadColumnNames();
         id.setDisable(true);
         modify.setDisable(true);
         delete.setDisable(true);
@@ -181,9 +217,45 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
             
         });
         
+        searchColumn.getItems().addAll("Name","Address","Tel","Email","Website","Type");
+        searchColumn.setValue("Name");
+        
     }    
     
    //// =================================== Fonctions effectuant des traitements specifiques ===============================
+    
+    void loadColumnNames(){
+        listColumnNames.add("id");
+        listColumnNames.add("Name");
+        listColumnNames.add("Address");
+        listColumnNames.add("Tel");
+        listColumnNames.add("Email");
+        listColumnNames.add("Website");
+        listColumnNames.add("Type");
+    }
+    
+    @FXML
+    public void print(){
+        ArrayList<String> data = new ArrayList<>();
+        sortedData.forEach((value)->{
+            data.add(String.valueOf(value.getId()));
+            data.add(value.getName());
+            data.add(value.getAddress());
+            data.add(value.getTel());
+            data.add(value.getEmail());
+            data.add(value.getWebsite());
+            data.add(value.getType());
+        });
+       
+        try {
+             PrinterClass printer = new PrinterClass("List of Suppliers",listColumnNames,data);
+             printer.printToPDF();
+            // PdfViewer view = new PdfViewer(PrinterClass.DEFAULT_OUTPUT);
+            // view.show();
+        } catch (DocumentException | IOException ex) {
+            Logger.getLogger(SuppliersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     /** Recupere la connection et charge les informations utilisant la B.D. : les types de fournisseurs, la liste des fournisseurs.
      * @param con.
@@ -213,14 +285,16 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
     }
     
     /**Initialisation de la tableview**/
+    
     @Override
     public void initializeTableView(){
         //id Column
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+      //  idColumn.setCellValueFactory(cellData -> cellData.getValue().getId());
         
-        //name Column
+//name Column
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        
+        //nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         //address Column
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         
@@ -246,11 +320,68 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
     
     /** Lire la BD et charger tous les fournisseurs dans la tableView i.e. Les ajouter dans l'ArrayList listSuppliers*/
     public void loadSuppliers(){
+        //Load Suppliers from Database
         tableView.setItems(null);
         fournisseursUtils.list().forEach((e)->{
             listSuppliers.add(e);
         });
-        tableView.setItems(listSuppliers);
+        
+        //Wrap the ObservableList in a FilteredList (initially display all data).
+        filteredData = new FilteredList<>(listSuppliers,p->true);
+        
+        //Set the filter Predicate whenever the filter changes.
+        searchTextField.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            filteredData.setPredicate(person->{
+                if(newValue == null || newValue.isEmpty()){ 
+                    searchButton.setVisible(true);
+                    stopSearchButton.setVisible(false);
+                    return true;
+                }
+                
+                searchButton.setVisible(false);
+                stopSearchButton.setVisible(true);
+                
+                // Compare name of every suppliers with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                switch(searchColumn.getValue())
+                {
+                    case "Name":
+                        if(person.getName().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    case "Address":
+                        if(person.getAddress().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    case "Tel":
+                        if(person.getTel().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    case "Website":
+                        if(person.getWebsite().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    case "Email":
+                        if(person.getEmail().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    case "Type":
+                        if(person.getType().toLowerCase().contains(lowerCaseFilter)) return true;
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            });
+        });
+        
+        // Wrap the FilteredList in a SortedList. 
+        sortedData = new SortedList<>(filteredData);
+        
+        //Bind the SortedList comparator to the TableView comparator.
+        sortedData.comparatorProperty().bind(tableView.comparatorProperty());
+        
+        //Add sorted (and filtered) data to the table.
+        tableView.setItems(sortedData);
+        
+        //Sauvegarde le plus grand Id pour les ajouts futurs
+        maxId = listSuppliers.get(listSuppliers.size()-1).getId();
         
     }
     
@@ -354,15 +485,16 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
     
     @Override
     public void initializeId(){
-        int maxId=1;
-        for(Fournisseurs a:listSuppliers){
-            maxId = (maxId < a.getId())? a.getId():maxId;
-        }
         id.setText(String.valueOf(maxId + 1));
-    }
-  
+    }  
     
     //====================== Les listeners des differents buttons et Elements de notre vue =========================
+    @FXML
+    void initSearchPane(){
+        searchTextField.clear();
+        searchButton.setVisible(true);
+        stopSearchButton.setVisible(false);
+    }
     
     /** Fonction appelee lorsque le bouton "Add" est clicke */
     @Override
@@ -410,6 +542,7 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
             listSuppliers.add(data);
             tableView.getSelectionModel().clearSelection();
             tableView.getSelectionModel().select(data);
+            maxId ++;
         }
         else if (operation.equals("MODIFICATION"))
         {
@@ -477,14 +610,14 @@ public class SuppliersController extends defaultController<Fournisseurs> impleme
     
     @FXML
     void verifyEmail(KeyEvent e){
-        String regex= "\\w*@\\w*\\.\\w*";
+        String regex= "\\w*@\\w*\\.\\w+";
         String value = email.getText();
         fieldValue.set(3, verifyValue(value,regex,emailImg,confirm));
     }
     
     @FXML
     void verifyWebsite(KeyEvent e){
-        String regex= "\\w*\\.\\w*";
+        String regex= "\\w*\\.\\w+";
         String value = website.getText();
         fieldValue.set(4, verifyValue(value,regex,websiteImg,confirm));
     }

@@ -23,48 +23,34 @@ public abstract class defaultController<T>{
     //===Utilise pour connaitre si on fait une modification d'in fournisseur ou si on en ajoute un ==
     String operation = "";
     
+    //==== Utilise pour fournir l'id d'un nouveau element
+    int maxId = 1;
     //// =================================== Fonctions effectuant des traitements specifiques ===============================
-    public void setConnection(Connection con){
-        
-    }
+    public abstract void setConnection(Connection con);
     
     /**Initialisation de la tableview**/
-    public void initializeTableView(){
-        
-    }
+    public abstract void initializeTableView();
     
     /** Desactive tous les champs du formulaire si value == true et les active sinon
      * @param value
      */
-    public void disableFields(Boolean value){
-        
-    }
+    public abstract void disableFields(Boolean value);
     
     /** Initialise tous les champs de notre formulaire en effacant ce qu'ils contiennent*/
-    public void initFields(){
-        
-    }
+    public abstract void initFields();
     
     /** Charge les donnees d'un fournisseur( represente par l'argument data) dans les differents champs
      * @param data 
      **/
-    public void loadData(T data){
-        
-    }
+    public abstract void loadData(T data);
     
-    public void initializeInterface(Boolean initialize){
-        
-    }
+    public abstract void initializeInterface(Boolean initialize);
     
-    public T getData(){
-        return null;
-    }
+    public abstract T getData();
      
-    public Boolean modifyData(T data){
-        return null;
-    }
+    public abstract Boolean modifyData(T data);
     
-     public void initializeId(){};
+     public abstract void initializeId();
     
     /**Raccourci de System.out.println*/
     void print(Object value)
@@ -94,15 +80,15 @@ public abstract class defaultController<T>{
     
     /** Fonction appelee lorsque le bouton "Delete" est clicke */
     @FXML
-    void deleteClicked(ActionEvent event) {}
+    abstract void deleteClicked(ActionEvent event);
     
     /** Fonction appelee lorsque le bouton "Confirm" est clicke */
     @FXML
-    void confirmClicked(ActionEvent event) {}
+    abstract void confirmClicked(ActionEvent event);
     
     /** Elle est appelee lorsqu'on click sur le tableview. Charge les informations de la ligne selectionnee et la charge dans le formulaire**/
     @FXML
-    void tableViewClicked(MouseEvent event) {}
+    abstract void tableViewClicked(MouseEvent event);
     
      /** Fonction appelee lorsque le bouton "Cancel" est clicke */
     @FXML
@@ -126,5 +112,5 @@ public abstract class defaultController<T>{
        }
        return true;
     }
-    public void verifyAll(){}
+    public abstract void verifyAll();
 }

@@ -43,7 +43,8 @@ CREATE TABLE Fournisseur(
 	siteweb VARCHAR(20),
 	type INT(1),
 	PRIMARY KEY(id),
-	UNIQUE ind_uni_email (email)
+	UNIQUE ind_uni_email (email),
+        UNIQUE ind_uni-nom (nom)
 )
 ENGINE=INNODB;
 
@@ -245,7 +246,7 @@ CREATE TABLE Employes (
         tel VARCHAR(15) NOT NULL,
         adress VARCHAR(30) NOT NULL,
         email VARCHAR(30) NOT NULL,
-        image VARCHAR(100) NOT NULL DEFAULT "/images/defaultProfile.png",
+        image VARCHAR(100) NOT NULL DEFAULT "images/defaultProfile.png",
 	PRIMARY KEY(idEm),
         UNIQUE ind_username (username)
 )

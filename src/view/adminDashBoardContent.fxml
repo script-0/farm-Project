@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -18,13 +19,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane styleClass="centerPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardContentController">
+<StackPane styleClass="centerPane" stylesheets="@../style/cashLegend.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashBoardContentController">
    <children>
       <VBox alignment="CENTER" fillWidth="false">
          <children>
             <Pane>
                <children>
-                  <Pane prefHeight="262.0" prefWidth="1153.0" styleClass="topPane">
+                  <Pane prefHeight="239.0" prefWidth="1153.0" styleClass="topPane">
                      <children>
                         <Pane fx:id="mailPane" layoutX="938.0" layoutY="19.0" prefHeight="30.0" prefWidth="39.0">
                            <children>
@@ -43,8 +44,8 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="64.0" prefHeight="30.0" prefWidth="160.0" styleClass="welcome" text="Welcome back," />
-                        <Label fx:id="textNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="99.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="49.0" prefHeight="30.0" prefWidth="160.0" styleClass="welcome" text="Welcome back," />
+                        <Label fx:id="textNotification" alignment="CENTER" contentDisplay="CENTER" layoutX="362.0" layoutY="84.0" prefHeight="17.0" prefWidth="395.0" styleClass="notification" text="You have &lt;&gt;new messages and &lt;&gt; new notifications" />
                         <Pane fx:id="notificationPane" layoutX="984.0" layoutY="13.0" prefHeight="36.0" prefWidth="35.0">
                            <children>
                               <ImageView fitHeight="22.0" fitWidth="25.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -62,19 +63,19 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Pane>
-                        <Label fx:id="nameProfile2" layoutX="598.0" layoutY="64.0" prefHeight="29.0" prefWidth="91.0" text="&lt;Nom&gt;!" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="nameProfile2" layoutX="598.0" layoutY="49.0" prefHeight="29.0" prefWidth="91.0" text="&lt;Nom&gt;!" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Cambria Bold" size="21.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="48.0" layoutY="124.0">
+                  <Pane layoutX="48.0" layoutY="81.0" prefHeight="130.0" prefWidth="1016.0">
                      <children>
                         <Label prefHeight="50.0" prefWidth="178.0" styleClass="nameProfile" text="Monthly Overview" />
                         <Label layoutY="42.0" text="Period:" />
                         <Label fx:id="date" layoutX="43.0" layoutY="42.0" styleClass="period" text="Oct 14 , 2019- Oct 21, 2019 " />
-                        <Pane layoutX="12.0" layoutY="68.0" prefHeight="79.0" prefWidth="187.0" styleClass="dashItem">
+                        <Pane layoutX="12.0" layoutY="62.0" prefHeight="68.0" prefWidth="187.0" styleClass="dashItem">
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="131.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -90,7 +91,7 @@
                               <Label fx:id="cash" layoutX="28.0" layoutY="31.0" prefHeight="30.0" prefWidth="107.0" styleClass="dashItemMoney" text="1 000 000" />
                            </children>
                         </Pane>
-                        <Pane layoutX="226.0" layoutY="68.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
+                        <Pane layoutX="225.0" layoutY="60.0" prefHeight="68.0" prefWidth="175.0" styleClass="dashItem">
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="115.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -101,7 +102,7 @@
                               <Label fx:id="totalBande" layoutX="8.0" layoutY="31.0" prefHeight="30.0" prefWidth="113.0" styleClass="dashItemMoney" text="25 000" />
                            </children>
                         </Pane>
-                        <Pane layoutX="432.0" layoutY="68.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
+                        <Pane layoutX="432.0" layoutY="60.0" prefHeight="68.0" prefWidth="175.0" styleClass="dashItem">
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="113.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -109,10 +110,10 @@
                                  </image>
                               </ImageView>
                               <Label layoutX="7.0" layoutY="6.0" prefHeight="20.0" prefWidth="114.0" styleClass="dashItemName" text="EGG PRODUCTION" />
-                              <Label id="totalEgg" layoutX="8.0" layoutY="30.0" prefHeight="30.0" prefWidth="102.0" styleClass="dashItemMoney" text="5 000" />
+                              <Label id="totalEgg" fx:id="totalEgg" layoutX="8.0" layoutY="30.0" prefHeight="30.0" prefWidth="102.0" styleClass="dashItemMoney" text="5 000" />
                            </children>
                         </Pane>
-                        <Pane layoutX="641.0" layoutY="68.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
+                        <Pane layoutX="641.0" layoutY="59.0" prefHeight="68.0" prefWidth="175.0" styleClass="dashItem">
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="117.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -123,7 +124,7 @@
                               <Label fx:id="bandeAVacc" layoutX="7.0" layoutY="32.0" prefHeight="30.0" prefWidth="111.0" styleClass="dashItemMoney" text="5 000" />
                            </children>
                         </Pane>
-                        <Pane layoutX="841.0" layoutY="68.0" prefHeight="79.0" prefWidth="175.0" styleClass="dashItem">
+                        <Pane layoutX="841.0" layoutY="60.0" prefHeight="68.0" prefWidth="175.0" styleClass="dashItem">
                            <children>
                               <Label layoutX="7.0" layoutY="7.0" prefHeight="20.0" prefWidth="114.0" styleClass="dashItemName" text="INCUBATOR" />
                               <ImageView fitHeight="53.0" fitWidth="65.0" layoutX="119.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -131,12 +132,12 @@
                                     <Image url="@../images/incubator.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="OeufIncub" layoutX="7.0" layoutY="33.0" prefHeight="30.0" prefWidth="114.0" styleClass="dashItemMoney" text="5 000" />
+                              <Label fx:id="oeufIncube" layoutX="7.0" layoutY="33.0" prefHeight="30.0" prefWidth="114.0" styleClass="dashItemMoney" text="5 000" />
                            </children>
                         </Pane>
                      </children>
                   </Pane>
-                  <ScrollPane layoutX="20.0" layoutY="282.0" prefHeight="530.0" prefWidth="1101.0" styleClass="flowPane">
+                  <ScrollPane fitToWidth="true" layoutX="20.0" layoutY="215.0" prefHeight="540.0" styleClass="flowPane">
                      <content>
                         <VBox alignment="CENTER" fillWidth="false" spacing="10.0">
                            <children>
@@ -152,26 +153,37 @@
                                                 <NumberAxis side="LEFT" />
                                              </yAxis>
                                           </AreaChart>
-                                          <JFXRadioButton fx:id="entree" layoutX="63.0" layoutY="286.0" text="Earning" />
-                                          <JFXRadioButton fx:id="sortie" layoutX="214.0" layoutY="285.0" text="OutComing" />
-                                          <JFXRadioButton fx:id="benefice" layoutX="374.0" layoutY="287.0" text="Incoming" />
+                                          <JFXRadioButton id="firstElement" fx:id="benefice" layoutX="63.0" layoutY="291.0" onAction="#earningButtonClicked" text="Bénéfices" />
+                                          <JFXRadioButton id="thirdElement" fx:id="sortie" layoutX="370.0" layoutY="292.0" onAction="#outComingButtonClicked" text="Sorties" />
+                                          <JFXRadioButton id="secondElement" fx:id="entree" layoutX="219.0" layoutY="291.0" onAction="#inComingButtonClicked" text="Entrées" />
+                                          <JFXButton fx:id="refreshCash" layoutX="436.0" layoutY="-1.0" onAction="#refreshCash" styleClass="refreshButton" text="Refresh">
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="19.0">
+                                                   <image>
+                                                      <Image url="@../images/update.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
                                        </children>
                                     </Pane>
-                                    <LineChart fx:id="healthGraph" layoutX="568.0" layoutY="10.0" prefHeight="286.0" prefWidth="489.0">
-                                       <xAxis>
-                                          <CategoryAxis side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis side="LEFT" />
-                                       </yAxis>
-                                    </LineChart>
+                                    <PieChart fx:id="healthGraph" layoutX="580.0" layoutY="3.0" prefHeight="316.0" prefWidth="480.0" />
+                                    <JFXButton fx:id="refreshHealth" layoutX="971.0" layoutY="8.0" onAction="#refreshHealth" styleClass="refreshButton" text="Refresh">
+                                       <graphic>
+                                          <ImageView fitHeight="21.0" fitWidth="19.0">
+                                             <image>
+                                                <Image url="@../images/update.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </JFXButton>
                                  </children>
                               </Pane>
                               <HBox fillHeight="false" spacing="10.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Pane prefHeight="417.0" prefWidth="547.0" styleClass="monthlyOverview">
                                        <children>
-                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="50.0" prefWidth="136.0" styleClass="nameProfile" text="Next Tasks" />
+                                          <Label layoutX="14.0" layoutY="2.0" prefHeight="36.0" prefWidth="267.0" styleClass="nameProfile" text="Customers Evolution" />
                                           <AreaChart fx:id="clientGraph" layoutX="50.0" layoutY="61.0" prefHeight="352.0" prefWidth="458.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
@@ -180,6 +192,15 @@
                                                 <NumberAxis side="LEFT" />
                                              </yAxis>
                                           </AreaChart>
+                                          <JFXButton fx:id="refreshClient" layoutX="453.0" layoutY="5.0" onAction="#refreshClient" styleClass="refreshButton" text="Refresh">
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="19.0">
+                                                   <image>
+                                                      <Image url="@../images/update.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
                                        </children>
                                     </Pane>
                                     <Pane prefHeight="417.0" prefWidth="499.0" styleClass="monthlyOverview">
@@ -195,6 +216,15 @@
                                                 <NumberAxis side="LEFT" />
                                              </yAxis>
                                           </BarChart>
+                                          <JFXButton fx:id="refreshSales" layoutX="409.0" layoutY="4.0" onAction="#refreshSales" styleClass="refreshButton" text="Refresh">
+                                             <graphic>
+                                                <ImageView fitHeight="21.0" fitWidth="19.0">
+                                                   <image>
+                                                      <Image url="@../images/update.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </JFXButton>
                                        </children>
                                     </Pane>
                                  </children>

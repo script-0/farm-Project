@@ -14,6 +14,23 @@ and open the template in the editor.
     -fx-effect:dropshadow(three-pass-box,#615b5b,10,0,0,0);
 }
 
+.searchButton{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 0em 0em 0em 1em;
+    -fx-border-color: #999999;
+    -fx-border-radius:  0em 0em 0em 1em;
+}
+
+.searchButton:hover{
+    -fx-background-color: derive(#16A2A0,50%);
+}
+
+.searchTextField{
+    -fx-background-radius: 0em 1.1em 0em 0em;
+    -fx-border-color: #999999;
+    -fx-border-radius:  0em 1.1em 0em 0em;
+}
+
 .labelDetails{
     -fx-font-family:"Cambria";
     -fx-font-size:22px;

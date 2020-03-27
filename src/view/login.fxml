@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
-<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
@@ -43,12 +44,12 @@
                                     <Image url="@../images/logoLogin.png" />
                                  </image>
                               </ImageView>
-                              <Label layoutX="65.0" layoutY="302.0" prefHeight="45.0" prefWidth="199.0" text="Script Farm" textFill="#f5f5f5">
+                              <Label fx:id="appName" layoutX="65.0" layoutY="302.0" prefHeight="45.0" prefWidth="199.0" text="Script Farm" textFill="#f5f5f5">
                                  <font>
                                     <Font name="Cambria" size="37.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="19.0" layoutY="356.0" prefHeight="20.0" prefWidth="299.0" text="Manage and control your farm activities easily">
+                              <Label fx:id="appDescription" layoutX="19.0" layoutY="356.0" prefHeight="20.0" prefWidth="299.0" text="Manage and control your farm activities easily">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -57,6 +58,7 @@
                         </Pane>
                         <Pane styleClass="loginRightPane">
                            <children>
+                              <JFXSpinner fx:id="spinner" layoutX="184.0" layoutY="5.0" prefHeight="33.0" prefWidth="30.0" startingAngle="360.0" />
                               <JFXButton fx:id="signAdminButton" graphicTextGap="20.0" layoutX="95.0" layoutY="335.0" onAction="#verifyAdmin" styleClass="signAdminButton" text="Sign Up As Administrator">
                                  <graphic>
                                     <ImageView fitHeight="38.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
@@ -96,14 +98,14 @@
                               </JFXButton>
                               <Separator layoutX="76.0" layoutY="321.0" prefHeight="3.0" prefWidth="114.0" />
                               <Separator layoutX="221.0" layoutY="320.0" prefHeight="3.0" prefWidth="114.0" />
-                              <Label layoutX="200.0" layoutY="308.0" text="Or">
+                              <Label fx:id="or" layoutX="200.0" layoutY="308.0" text="Or">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
                               <Separator layoutX="229.0" layoutY="393.0" prefHeight="3.0" prefWidth="106.0" />
                               <Separator layoutX="76.0" layoutY="393.0" prefHeight="3.0" prefWidth="114.0" />
-                              <Label layoutX="203.0" layoutY="383.0" text="Or">
+                              <Label fx:id="or2" layoutX="203.0" layoutY="383.0" text="Or">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -114,23 +116,22 @@
                                  </padding>
                               </JFXButton>
                               <Label alignment="CENTER" layoutX="227.0" layoutY="501.0" prefHeight="17.0" prefWidth="167.0" styleClass="version" text="Version 1.0 - Jan 2020" />
-                              <Pane fx:id="progressPane" layoutX="36.0" layoutY="452.0" prefWidth="269.0" visible="false">
-                                 <children>
-                                    <Label alignment="TOP_LEFT" cache="true" text="Loading  Interface ...">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </Label>
-                                    <JFXProgressBar fx:id="progressBar" layoutX="69.0" layoutY="20.0" secondaryProgress="1.0" style="-fx-min-height: 21px;" />
-                                 </children>
-                              </Pane>
+                              <JFXButton fx:id="appSettings" layoutX="294.0" layoutY="10.0" styleClass="appSettingsButton" text="App Settings" />
+                              <JFXComboBox fx:id="language" focusColor="#16a2a0" layoutX="225.0" layoutY="11.0" onAction="#languageChanged" prefHeight="25.0" prefWidth="55.0" />
                            </children>
                         </Pane>
                      </children>
                   </HBox>
+                  <Pane fx:id="progressPane" layoutX="203.0" layoutY="115.0" prefHeight="281.0" prefWidth="322.0" style="-fx-background-color: rgb(22,132,160,0.6); -fx-background-radius: 0.6em;" visible="false">
+                     <children>
+                        <JFXSpinner fx:id="progressSpinner" layoutX="70.0" layoutY="62.0" prefHeight="171.0" prefWidth="172.0" />
+                        <Label fx:id="progressLabel" layoutX="42.0" layoutY="11.0" prefHeight="34.0" prefWidth="240.0" text="Loading Interface ..." textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Group>
          </center>

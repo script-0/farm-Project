@@ -6,10 +6,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import java.io.File;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,12 +22,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import model.Profils;
+import model.Tools;
 import model.databaseUtils;
 
 /**
@@ -142,6 +155,21 @@ public class AdminDashBoardController implements Initializable {
     private TitledPane healthTitledPane;
     
     
+    @FXML
+    private JFXButton editProfileButton;
+    
+    @FXML
+    private JFXButton logoutButton;
+    
+    @FXML
+    private JFXButton confirmButton;
+    
+    @FXML
+    private JFXTextField newName;
+    
+    @FXML
+    private JFXButton moreOptionButton;
+    
     private Profils userProfile;
     
     public databaseUtils utils;
@@ -150,6 +178,8 @@ public class AdminDashBoardController implements Initializable {
     
     private Node hasFocusTitledPane;
     
+    
+    
     public void setUtils(databaseUtils utils)
     {
         this.utils = utils;
@@ -157,33 +187,43 @@ public class AdminDashBoardController implements Initializable {
     
     @FXML
     void loadBatchFlock(ActionEvent event) { //load batchFlockView.fxml
-        loadSimpleContent("batchFlock");
-        changeFocus(batchFlock);
+        if(hasFocus!=batchFlock){
+            loadSimpleContent("batchFlock");
+            changeFocus(batchFlock);
+        }
     }
 
     @FXML
     void loadBreed(ActionEvent event) { //load breedView.fxml
-        loadSimpleContent("breed");
-        changeFocus(breed);
+        if(hasFocus!=breed){
+            loadSimpleContent("breed");
+            changeFocus(breed);
+        }
     }
 
     @FXML
     void loadBuilding(ActionEvent event) { //load buildingView.fxml
-        loadSimpleContent("building");
-        changeFocus(building);
-        changeTitledPaneFocus(farmTitledPane);
+        if(hasFocus!=building){
+            loadSimpleContent("building");
+            changeFocus(building);
+            changeTitledPaneFocus(farmTitledPane);
+        }
     }
 
     @FXML
     void loadCustomers(ActionEvent event) {  //load customersView.fxml
-        loadSimpleContent("customers");
-        changeFocus(customers);
-        changeTitledPaneFocus(staffTitledPane);
+        if(hasFocus!=customers){
+            loadSimpleContent("customers");
+            changeFocus(customers);
+            changeTitledPaneFocus(staffTitledPane);
+        }
     }
 
     @FXML
     void loadDashboard(ActionEvent event) { //load adminDashBoardContent.fxml
-        loadContent();
+        if(hasFocus!=dashboard){
+            loadContent();
+        }
     }
 
     @FXML
@@ -193,101 +233,131 @@ public class AdminDashBoardController implements Initializable {
 
     @FXML
     void loadEggProd(ActionEvent event) { //load eggProdView.fxml
-        loadSimpleContent("eggProd");
-        changeFocus(eggProd);
+        if(hasFocus!=eggProd){
+            loadSimpleContent("eggProd");
+            changeFocus(eggProd);
+        }
     }
 
     @FXML
     void loadEggTypes(ActionEvent event) { //load eggTypeView.fxml
-        loadSimpleContent("eggType");
+       if(hasFocus!=eggTypes){ 
+         loadSimpleContent("eggType");
         changeFocus(eggTypes);
+       }
     }
 
     @FXML
     void loadFood(ActionEvent event) { //load foodView.fxml
-        loadSimpleContent("food");
-        changeFocus(food);
+        if(hasFocus!=food){
+            loadSimpleContent("food");
+            changeFocus(food);
+        }
     }
 
     @FXML
     void loadSick(ActionEvent event) { //load sicknessView.fxml
-        loadSimpleContent("sickness");
-        changeFocus(sick);
+        if(hasFocus!=sick){
+          loadSimpleContent("sickness");
+          changeFocus(sick);
+        }
     }
 
     @FXML
     void loadSuppliers(ActionEvent event) { // load suppliersView.fxml
         
-        SuppliersController con = (SuppliersController)loadSimpleContent("suppliers");
-        try {
-            con.setConnection(utils.getConnection());
-        } catch (SQLException ex) {
-            Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
+        if(hasFocus!=suppliers){
+            SuppliersController con = (SuppliersController)loadSimpleContent("suppliers");
+            try {
+                con.setConnection(utils.getConnection());
+            } catch (SQLException ex) {
+               Logger.getLogger(AdminDashBoardController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            changeFocus(suppliers);
+            changeTitledPaneFocus(staffTitledPane);
         }
-        changeFocus(suppliers);
-        changeTitledPaneFocus(staffTitledPane);
     }
 
     @FXML
     void loadVaccination(ActionEvent event) { //laod vaccinView.fxml
-        loadSimpleContent("vaccin");
-        changeFocus(vaccination);
+        if(hasFocus!=vaccination){
+            loadSimpleContent("vaccin");
+            changeFocus(vaccination);
+        }
     }
 
     @FXML
     void loadVaccine(ActionEvent event) { //load VaccineView.fxml
-        loadSimpleContent("vaccine");
-        changeFocus(vaccine);
+        if(hasFocus!=vaccine){
+            loadSimpleContent("vaccine");
+            changeFocus(vaccine);
+        }
     }   
 
      @FXML
     void loadVenteBande(ActionEvent event) {
-        loadSimpleContent("batchFlock");
-        changeFocus(venteBande);
+        if(hasFocus!=venteBande){
+            loadSimpleContent("batchFlock");
+            changeFocus(venteBande);
+        }
     }
 
     @FXML
     void loadVenteOeuf(ActionEvent event) {
-        //loadSimpleContent("vaccine");
-        changeFocus(venteOeuf);
+        if(hasFocus!=venteOeuf){
+            //loadSimpleContent("vaccine");
+            changeFocus(venteOeuf);
+        }
     }
 
      @FXML
     void loadStockAliment(ActionEvent event) {
-       // loadSimpleContent("vaccine");
+       if(hasFocus!=stockAliment){
+        // loadSimpleContent("vaccine");
         changeFocus(stockAliment);
+       }
     }
     
      @FXML
     void loadIncubation(ActionEvent event) {
-        //loadSimpleContent("vaccine");
-        changeFocus(incubation);
+        if(hasFocus!=incubation){
+            //loadSimpleContent("vaccine");
+            changeFocus(incubation);
+        }
     }
 
     @FXML
     void loadPoussinProduit(ActionEvent event) {
-        //loadSimpleContent("vaccine");
-        changeFocus(poussinProduit);
+        if(hasFocus!=poussinProduit){
+            //loadSimpleContent("vaccine");
+            changeFocus(poussinProduit);
+        }
     }
 
      @FXML
     void loadEmployees(ActionEvent event) {
-        //loadSimpleContent("vaccine");
-        changeFocus(employees);
-        changeTitledPaneFocus(staffTitledPane);
+        if(hasFocus!=staffTitledPane){
+            //loadSimpleContent("vaccine");
+            changeFocus(employees);
+            changeTitledPaneFocus(staffTitledPane);
+        }
     }
 
     
     @FXML
     void loadRation(ActionEvent event) {
-        //loadSimpleContent("vaccine");
-        changeFocus(ration);
+        if(hasFocus!=ration){
+            //loadSimpleContent("vaccine");
+            changeFocus(ration);
+        }
     }
 
     @FXML
     void loadBandeMalade(ActionEvent event) {
-       // loadSimpleContent("vaccine");
-        changeFocus(bandeMalade);
+        if(hasFocus!=bandeMalade){
+            // loadSimpleContent("vaccine");
+            changeFocus(bandeMalade);
+        }
     }    
     
     public void loadContent()
@@ -384,8 +454,87 @@ public class AdminDashBoardController implements Initializable {
         userProfile = profil;
         
         nameProfile.setText(userProfile.getUsername());
-        //imgProfile.setImage(new Image(userProfile.getImage()));
+        imgProfile.setImage(new Image(userProfile.getImage()));
         typeEmp.setText(userProfile.getType());
     }
+    
+    @FXML
+    void newImage(MouseEvent event) {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Select an Image");
+        chooser.getExtensionFilters().addAll( new ExtensionFilter("Image Files","*.jpg","*.png",".gif"));
+//        chooser.setInitialDirectory(new File(System.getProperty("cur.dir")));
+        File file = chooser.showOpenDialog(  ((Node)(event.getSource())).getScene().getWindow() );
+        if(file == null ){
+            Tools.showNotification("File Chooser", "No file selected", Boolean.TRUE);
+        }else{
+            String relativePath = null;
+            try{
+                File current = new File(System.getProperty("user.dir")+"/src");
+                try{
+                    relativePath = current.toPath().relativize(file.toPath()).toString().replace("\\", "/");                   
+                }catch(java.lang.IllegalArgumentException e){ //Cas ou les fichiers ne sont pas dans le meme disque
+                    relativePath = file.toURI().toURL().toString();
+                }finally{
+                    Tools.print(relativePath);
+                     //Save image in DataBase.
+                     if(utils.saveImageProfile(userProfile.getUsername(), relativePath)){
+                         //Charger l'image dans l'imageView
+                         imgProfile.setImage(new Image(relativePath));
+                     }                         
+                }
+            } catch (MalformedURLException ex) {
+                Tools.showNotification("File Chooser", "Error occured. Try again later.", Boolean.TRUE);
+            }
+        }
+    }
+    
+    @FXML
+    void confirmButtonClicked(ActionEvent event) {
+        String text = newName.getText();
+        if(!text.equals("") && !text.equals(userProfile.getUsername())){
+            if(utils.saveUsername(userProfile.getUsername(),text)){
+                nameProfile.setText(text);
+                userProfile.setUsername(text);
+            }
+        }
+        initProfilePane(true);
+    }
+
+    @FXML
+    void editProfileButtonClicked(ActionEvent event) {
+        initProfilePane(false);
+    }
+    
+    @FXML
+    void moreOptionButtonClicked(ActionEvent event)
+    {
+         Tools.showNotification("System","Fonctionnalite pas prise en compte", Boolean.TRUE);
+    }
+    
+    @FXML
+    void logoutButtonClicked(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
+            Stage s =Tools.getStage(event);
+            s.setScene(new Scene(root));
+            s.centerOnScreen();            
+        } catch (IOException ex) {
+            Tools.showNotification("Interface Loader","Loading of Logging interface failed", Boolean.TRUE);
+        }        
+    }
+    
+    void initProfilePane(boolean value){
+        editProfileButton.setVisible(value);
+        logoutButton.setVisible(value);
+        confirmButton.setVisible(!value);
+        nameProfile.setVisible(value);
+        typeEmp.setVisible(value);
+        imgProfile.setDisable(value);
+        newName.setVisible(!value);
+        newName.setText(nameProfile.getText());
+        moreOptionButton.setVisible(!value);
+    }
+
     
 }

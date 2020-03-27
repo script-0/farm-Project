@@ -17,6 +17,6 @@ INSERT INTO TypeFournisseur VALUES (1,"Bande"),
                                    (4,"Aliment");
 
 -- --------------Ajout de l'utilisateur System ------------
-INSERT INTO Employes VALUES(null,"System","root","root",1,"694255463","EFoulan-Club France","bekolleisaac@gmail.com","/images/root.png");
+INSERT INTO Employes VALUES(null,"System","root","root",1,"694255463","EFoulan-Club France","bekolleisaac@gmail.com","images/defaultProfile.png");
 
 -- ---------------Ajout Supplier--------------------- --

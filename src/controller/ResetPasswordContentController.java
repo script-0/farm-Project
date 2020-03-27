@@ -8,8 +8,16 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import static java.lang.Boolean.FALSE;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -208,11 +216,14 @@ public class ResetPasswordContentController implements Initializable {
                 //Generate verification code
                 verificationCode = getVerificationCode();
                 //sendEmail
-               /* Boolean result = mailSender.send(email,verificationCode);               
-                if(result)
-                {*/System.out.println("Code:"+verificationCode);
+                boolean result= mailSender.send(email,verificationCode);
+                if(result){
+                    System.out.println("Code:"+verificationCode);
                     disabled(false);
-               // }
+                }else{
+                    Tools.showNotification("Email Sender", "Sending of verification code failed.\nVerify your connectivity and try again",true);
+                }
+                
              }
             
         }

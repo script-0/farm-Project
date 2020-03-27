@@ -8,12 +8,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <StackPane styleClass="rootPane" stylesheets="@../style/suppliersview.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuppliersController">
    <children>
@@ -21,7 +23,7 @@
          <children>
             <Pane VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tableView" layoutX="10.0" layoutY="346.0" onMouseClicked="#tableViewClicked" prefHeight="382.0" prefWidth="881.0">
+                  <TableView fx:id="tableView" layoutX="13.0" layoutY="354.0" onMouseClicked="#tableViewClicked" prefHeight="382.0" prefWidth="881.0">
                      <columns>
                         <TableColumn fx:id="idColumn" prefWidth="92.0" text="Id" />
                         <TableColumn fx:id="nameColumn" prefWidth="126.0" text="Name" />
@@ -35,7 +37,7 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <Pane fx:id="paneDetails" layoutX="10.0" layoutY="28.0" prefHeight="294.0" prefWidth="880.0" styleClass="paneDetails">
+                  <Pane fx:id="paneDetails" layoutX="13.0" layoutY="36.0" prefHeight="283.0" prefWidth="880.0" styleClass="paneDetails">
                      <children>
                         <Label fx:id="labelDetails" layoutX="115.0" layoutY="-14.0" prefHeight="27.0" prefWidth="89.0" styleClass="labelDetails" text="Details">
                            <effect>
@@ -141,6 +143,39 @@
                         <DropShadow color="#615b5b" />
                      </effect>
                   </Pane>
+                  <Pane layoutX="22.0" layoutY="306.0" prefHeight="42.0" prefWidth="864.0" styleClass="paneDetails">
+                     <children>
+                        <Label layoutX="414.0" layoutY="9.0" prefHeight="25.0" prefWidth="75.0" text="Search By">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <JFXComboBox fx:id="searchColumn" layoutX="489.0" layoutY="9.0" onAction="#initSearchPane" prefHeight="25.0" prefWidth="90.0" promptText="Name" />
+                        <JFXButton layoutX="61.0" layoutY="9.0" onAction="#print" text="print" />
+                     </children></Pane>
+                  <TextField fx:id="searchTextField" cache="true" layoutX="671.0" layoutY="311.0" prefHeight="30.0" prefWidth="206.0" promptText="Search Suppliers" styleClass="searchTextField">
+                     <opaqueInsets>
+                        <Insets right="30.0" />
+                     </opaqueInsets>
+                  </TextField>
+                  <JFXButton fx:id="searchButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="636.0" layoutY="311.0" prefHeight="30.0" prefWidth="22.0" styleClass="searchButton" text=" ">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="stopSearchButton" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="636.0" layoutY="311.0" onAction="#initSearchPane" prefHeight="30.0" prefWidth="22.0" styleClass="searchButton" text=" " visible="false">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="24.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/stopSearch.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
